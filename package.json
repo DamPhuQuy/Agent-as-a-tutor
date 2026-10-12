@@ -4,9 +4,17 @@
   "description": "Strict Socratic Tutor enforcing the 5-Step Understanding Framework, Anti-Cargo-Culting rules, and Evidence-First Quality Gates for AI Coding Agents.",
   "main": "bin/cli.js",
   "bin": {
-    "agent-as-a-tutor": "./bin/cli.js",
-    "strict-tutor": "./bin/cli.js"
+    "agent-as-a-tutor": "bin/cli.js",
+    "strict-tutor": "bin/cli.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamPhuQuy/Agent-as-a-tutor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DamPhuQuy/Agent-as-a-tutor/issues"
+  },
+  "homepage": "https://github.com/DamPhuQuy/Agent-as-a-tutor#readme",
   "scripts": {
     "test": "node bin/cli.js --help"
   },
@@ -28,6 +36,10 @@
   ],
   "author": "Phu Quy Dam",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "engines": {
     "node": ">=18.0.0"
   }
