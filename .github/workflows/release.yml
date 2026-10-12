@@ -1,0 +1,88 @@
+name: Automated Release & NPM Publish
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    name: Bump Version & Publish to NPM
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]') && !contains(github.event.head_commit.message, 'chore(release):')"
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Determine SemVer Bump Type
+        id: bump
+        run: |
+          COMMIT_MSG="${{ github.event.head_commit.message }}"
+          echo "Head commit message: $COMMIT_MSG"
+
+          BUMP_TYPE=$(node -e "
+            const msg = process.env.COMMIT_MSG || '';
+            if (/(BREAKING CHANGE|!:)|\bfeat!|\bfix!/i.test(msg)) {
+              console.log('major');
+            } else if (/^feat(\(.*\))?:/im.test(msg)) {
+              console.log('minor');
+            } else {
+              console.log('patch');
+            }
+          ")
+
+          echo "Calculated bump type: $BUMP_TYPE"
+          echo "type=$BUMP_TYPE" >> $GITHUB_OUTPUT
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+
+      - name: Configure Git Identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump Version & Create Git Tag
+        id: version
+        run: |
+          BUMP="${{ steps.bump.outputs.type }}"
+          echo "Bumping version with: npm version $BUMP"
+          NEW_VERSION=$(npm version $BUMP -m "chore(release): v%s [skip ci]")
+          echo "New version created: $NEW_VERSION"
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Push Version Commit & Tag to GitHub
+        run: |
+          git push origin main --follow-tags
+
+      - name: Publish to NPM
+        run: |
+          npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          name: ${{ steps.version.outputs.version }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

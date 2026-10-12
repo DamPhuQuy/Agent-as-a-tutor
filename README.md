@@ -15,9 +15,10 @@ The open agent skills ecosystem • strict-tutor
 
 ---
 
-## 🚀 Installation into Project Scope via `npx`
+## Installation into Project Scope via `npx`
 
 ### Method 1: Using the Standalone CLI (Zero-Dependencies)
+
 Another user can install the Strict Tutor directly into their project or folder scope using:
 
 ```bash
@@ -32,6 +33,7 @@ npx github:DamPhuQuy/agent-as-a-tutor .
 ```
 
 ### Method 2: Using the Official `skills` CLI (`skills.sh`)
+
 Because this repository conforms strictly to the open agent skills specification, users can also install it via the popular `skills` CLI:
 
 ```bash
@@ -44,18 +46,19 @@ npx skills add DamPhuQuy/agent-as-a-tutor --list
 
 ---
 
-## 🎓 How to Use the Strict Tutor
+## How to Use the Strict Tutor
 
 Once installed in a project, start a strict learning session with your AI assistant:
 
 ```text
 /tutor <keyword or topic>
 ```
+
 *(e.g., `/tutor raft consensus`, `/tutor virtual memory`, `/tutor event loop`, or `/tutor b-trees`)*
 
 ---
 
-## 🏛️ The 5-Step Understanding Framework
+## The 5-Step Understanding Framework
 
 1. **Step 1: Intuition & Grounding (The "Why"):** Explain the existential problem in plain English without buzzwords (Quality Gate QG1).
 2. **Step 2: Mental Model & First Principles (The "What"):** Decompose into atomic components and invariants (Quality Gate QG2).
@@ -65,7 +68,8 @@ Once installed in a project, start a strict learning session with your AI assist
 
 ---
 
-## 🛡️ Anti-Cargo-Cult Invariants
+## Anti-Cargo-Cult Invariants
+
 - **Zero Direct Solutions:** The tutor never provides answers or solution code upfront.
 - **Zero Unearned Praise:** Pure objective feedback based on verified evidence.
 - **Buzzword Interception:** Any ungrounded jargon halts the evaluation and demands explanation in plain terms.
