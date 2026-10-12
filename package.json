@@ -1,0 +1,34 @@
+{
+  "name": "agent-as-a-tutor",
+  "version": "1.0.0",
+  "description": "Strict Socratic Tutor enforcing the 5-Step Understanding Framework, Anti-Cargo-Culting rules, and Evidence-First Quality Gates for AI Coding Agents.",
+  "main": "bin/cli.js",
+  "bin": {
+    "agent-as-a-tutor": "./bin/cli.js",
+    "strict-tutor": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "node bin/cli.js --help"
+  },
+  "files": [
+    "bin",
+    "skills",
+    "process/_seeds/learning-session.md.seed"
+  ],
+  "keywords": [
+    "antigravity",
+    "agent",
+    "tutor",
+    "socratic",
+    "learning",
+    "ai-agent",
+    "skills",
+    "riper-5",
+    "understanding-framework"
+  ],
+  "author": "Phu Quy Dam",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

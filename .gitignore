@@ -1,0 +1,5 @@
+AGENTS.md
+process/
+.agents
+init.sh
+instruction-version.json
