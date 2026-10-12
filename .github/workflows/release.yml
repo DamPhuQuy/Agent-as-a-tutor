@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -17,7 +18,7 @@ jobs:
   release:
     name: Bump Version & Publish to NPM
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]') && !contains(github.event.head_commit.message, 'chore(release):')"
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
 
     steps:
       - name: Checkout Repository
@@ -32,45 +33,45 @@ jobs:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Determine SemVer Bump Type
-        id: bump
+      - name: Resolve Version to Publish
+        id: resolve
         run: |
-          COMMIT_MSG="${{ github.event.head_commit.message }}"
-          echo "Head commit message: $COMMIT_MSG"
+          PUBLISHED_VER=$(npm view agent-as-a-tutor version 2>/dev/null || echo "0.0.0")
+          LOCAL_VER=$(node -p "require('./package.json').version")
 
-          BUMP_TYPE=$(node -e "
-            const msg = process.env.COMMIT_MSG || '';
-            if (/(BREAKING CHANGE|!:)|\bfeat!|\bfix!/i.test(msg)) {
-              console.log('major');
-            } else if (/^feat(\(.*\))?:/im.test(msg)) {
-              console.log('minor');
-            } else {
-              console.log('patch');
-            }
-          ")
+          echo "Published on NPM: $PUBLISHED_VER"
+          echo "Local package.json: $LOCAL_VER"
 
-          echo "Calculated bump type: $BUMP_TYPE"
-          echo "type=$BUMP_TYPE" >> $GITHUB_OUTPUT
-        env:
-          COMMIT_MSG: ${{ github.event.head_commit.message }}
-
-      - name: Configure Git Identity
-        run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Bump Version & Create Git Tag
-        id: version
-        run: |
-          BUMP="${{ steps.bump.outputs.type }}"
-          echo "Bumping version with: npm version $BUMP"
-          NEW_VERSION=$(npm version $BUMP -m "chore(release): v%s [skip ci]")
-          echo "New version created: $NEW_VERSION"
-          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
-
-      - name: Push Version Commit & Tag to GitHub
-        run: |
-          git push origin main --follow-tags
+          if [ "$LOCAL_VER" = "$PUBLISHED_VER" ]; then
+            echo "Local version matches published version. Determining bump..."
+            COMMIT_MSG="${{ github.event.head_commit.message }}"
+            BUMP_TYPE=$(node -e "
+              const msg = process.env.COMMIT_MSG || '';
+              if (/(BREAKING CHANGE|!:)|\bfeat!|\bfix!/i.test(msg)) {
+                console.log('major');
+              } else if (/^feat(\(.*\))?:/im.test(msg)) {
+                console.log('minor');
+              } else {
+                console.log('patch');
+              }
+            ")
+            echo "Bumping $BUMP_TYPE..."
+            NEW_VER_RAW=$(npm version $BUMP_TYPE --no-git-tag-version)
+            NEW_VER="${NEW_VER_RAW#v}"
+            git commit -am "chore(release): v${NEW_VER} [skip ci]"
+            git tag "v${NEW_VER}"
+            echo "target_version=${NEW_VER}" >> $GITHUB_OUTPUT
+            echo "push_commit=true" >> $GITHUB_OUTPUT
+          else
+            echo "Local version ($LOCAL_VER) is unreleased. Publishing current version..."
+            echo "target_version=${LOCAL_VER}" >> $GITHUB_OUTPUT
+            echo "push_commit=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
 
       - name: Publish to NPM
         run: |
@@ -78,11 +79,16 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Create GitHub Release
+      - name: Push Git Commit & Tag to GitHub
+        if: steps.resolve.outputs.push_commit == 'true'
+        run: |
+          git push origin main --follow-tags
+
+      - name: Create or Update GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.version.outputs.version }}
-          name: ${{ steps.version.outputs.version }}
+          tag_name: v${{ steps.resolve.outputs.target_version }}
+          name: v${{ steps.resolve.outputs.target_version }}
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
