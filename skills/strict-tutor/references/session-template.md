@@ -3,36 +3,38 @@
 <tutor_session topic="[TOPIC]" started_at="[TIMESTAMP]">
 
 ## Session Control
-- **Topic:** [Keyword or Topic Name]
-- **Current Step:** [Step 1 | Step 2 | Step 3 | Step 4 | Step 5 | CERTIFIED]
-- **Active Gate:** [QG1 | QG2 | QG3 | QG4 | QG5 | COMPLETED]
-- **Attempts on Current Gate:** [0]
+- **Topic:** [Topic / Keyword Name]
+- **Mode:** [ADAPTIVE (Default) | STRICT]
+- **Current Focus:** [Active Concept or Dimension]
 - **Status:** [IN_PROGRESS | COMPLETED | PAUSED]
 
 ---
 
-## Quality Gate Verification Ledger
+## Concept Competency Ledger
 
-| Gate | Focus | Status | Certified At | Verified Evidence Summary |
-|---|---|:---:|---|---|
-| **QG1** | Intuition & Plain English | `LOCKED` | - | [Learner's intuition in plain words without jargon] |
-| **QG2** | Mental Model & Invariants | `LOCKED` | - | [Learner's atomic components and core invariants] |
-| **QG3** | Concrete Mechanics & Trace | `LOCKED` | - | [Learner's step-by-step causal trace or minimal code] |
-| **QG4** | Boundaries & Anti-Cargo-Cult | `LOCKED` | - | [Learner's failure modes and when NOT to use] |
-| **QG5** | Synthesis & Feynman Transfer | `LOCKED` | - | [Learner's unassisted transfer solution] |
+| Concept / Dimension | Status | Evidence Level | Verified Evidence Summary |
+|---|:---:|:---:|---|
+| **Dimension 1: Intuition & Pain Point** | `UNASSESSED` | - | [Learner's intuition or pain point in plain words] |
+| **Dimension 2: Mental Model & Invariants** | `UNASSESSED` | - | [Core components and inviolable rules identified] |
+| **Dimension 3: Mechanics & State Trace** | `UNASSESSED` | - | [Deterministic execution trace or code implementation] |
+| **Dimension 4: Boundaries & Trade-offs** | `UNASSESSED` | - | [Failure modes, costs, and anti-patterns recognized] |
+| **Dimension 5: Synthesis & Transfer** | `UNASSESSED` | - | [Independent application to novel scenario or Feynman explanation] |
 
----
-
-## Socratic Inquiry Log
-
-### Turn 1: Step 1 (Intuition)
-- **Tutor Challenge:** [Prompt given to learner]
-- **Learner Response:** [Learner's response]
-- **Tutor Evaluation:** [PASS / PARTIAL / REJECT with specific critique]
+*Evidence Levels: `UNASSESSED` (Not evaluated) | `INTRODUCED` (Explained by tutor) | `ASSISTED` (Solved with hints) | `INDEPENDENT` (Solved without assistance)*
 
 ---
 
-## Intercepted Buzzwords & Anti-Patterns
-- [List any intercepted buzzwords and how the learner resolved them]
+## Interaction Summary Log
+
+### Turn 1: [Concept / Topic]
+- **Learner Intent:** [Explanation requested / Practice / Specific question]
+- **Tutor Action:** [Grounded explanation / Worked example / Calibrated challenge]
+- **Learner Response:** [Learner's explanation, trace, or solution]
+- **Evaluation & Evidence:** [Evidence level assigned with objective notes]
+
+---
+
+## Scaffolding & Recovery Notes
+- [Record any bridge instruction or conceptual adjustments provided during the session]
 
 </tutor_session>
