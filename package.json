@@ -1,6 +1,6 @@
 {
   "name": "agent-as-a-tutor",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Strict Socratic Tutor enforcing the 5-Step Understanding Framework, Anti-Cargo-Culting rules, and Evidence-First Quality Gates for AI Coding Agents.",
   "main": "bin/cli.js",
   "bin": {
