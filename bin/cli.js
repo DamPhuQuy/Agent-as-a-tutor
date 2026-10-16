@@ -136,13 +136,20 @@ function copyDirRecursive(src, dest, overwrite, onFile) {
 
 console.log(`${CYAN}◇${RESET}  ${BOLD}Installing to agent directories...${RESET}`);
 
-// Target directory (Single Source of Truth)
-const targetSkillsSkill = path.join(targetDir, 'skills', 'strict-tutor');
+// Target directories: Primary .agents/skills (Agent customization root) + skills (compatibility)
+const targetAgentSkillsDir = path.join(targetDir, '.agents', 'skills', 'strict-tutor');
+const targetLegacySkillsDir = path.join(targetDir, 'skills', 'strict-tutor');
 
 // Track installed files for pretty reporting
 const installedFiles = new Set();
 
-copyDirRecursive(sourceSkillDir, targetSkillsSkill, isForce, (f) => {
+// 1. Install into .agents/skills/strict-tutor (Primary agent customization root)
+copyDirRecursive(sourceSkillDir, targetAgentSkillsDir, isForce, (f) => {
+  installedFiles.add(path.relative(targetDir, f));
+});
+
+// 2. Mirror into skills/strict-tutor for backward compatibility
+copyDirRecursive(sourceSkillDir, targetLegacySkillsDir, isForce, (f) => {
   installedFiles.add(path.relative(targetDir, f));
 });
 
@@ -165,30 +172,34 @@ let agentsMdUpdated = false;
 const targetAgentsMd = path.join(targetDir, 'AGENTS.md');
 if (fs.existsSync(targetAgentsMd)) {
   let content = fs.readFileSync(targetAgentsMd, 'utf8');
+  const tutorCommand = `      - Command \`/tutor <topic>\`: activates the Strict Socratic Tutor skill (\`.agents/skills/strict-tutor/SKILL.md\`) enforcing the 5-Step Understanding Framework, Anti-Rote & Anti-Cargo-Culting rules, and Evidence-First Quality Gates.\n`;
   if (!content.includes('/tutor')) {
-    const tutorCommand = `      - Command \`/tutor <topic>\`: activates the Strict Socratic Tutor skill (\`skills/strict-tutor/SKILL.md\`) enforcing the 5-Step Understanding Framework, Anti-Rote & Anti-Cargo-Culting rules, and Evidence-First Quality Gates.\n`;
     if (content.includes('Prompt & Slash Command Initialization')) {
       content = content.replace(/(Prompt & Slash Command Initialization:[^\n]*\n)/, `$1${tutorCommand}`);
       fs.writeFileSync(targetAgentsMd, content, 'utf8');
       agentsMdUpdated = true;
     }
+  } else if (content.includes('skills/strict-tutor/SKILL.md') && !content.includes('.agents/skills/strict-tutor/SKILL.md')) {
+    content = content.replace(/skills\/strict-tutor\/SKILL\.md/g, '.agents/skills/strict-tutor/SKILL.md');
+    fs.writeFileSync(targetAgentsMd, content, 'utf8');
+    agentsMdUpdated = true;
   }
 }
 
 // Print installed file list with clack bullets
 const fileList = Array.from(installedFiles);
 const previewFiles = [
-  'skills/strict-tutor/SKILL.md',
-  'skills/strict-tutor/references/pedagogy-rubric.md',
-  'skills/strict-tutor/references/anti-cargo-cult-rules.md',
-  'skills/strict-tutor/references/session-template.md'
+  '.agents/skills/strict-tutor/SKILL.md',
+  '.agents/skills/strict-tutor/references/pedagogy-rubric.md',
+  '.agents/skills/strict-tutor/references/anti-cargo-cult-rules.md',
+  '.agents/skills/strict-tutor/references/session-template.md'
 ];
 
 previewFiles.forEach(pf => {
   console.log(`${CYAN}│${RESET}  ${GREEN}✔${RESET} ${DIM}${pf}${RESET}`);
 });
 if (agentsMdUpdated) {
-  console.log(`${CYAN}│${RESET}  ${GREEN}✔${RESET} ${DIM}AGENTS.md (registered /tutor command)${RESET}`);
+  console.log(`${CYAN}│${RESET}  ${GREEN}✔${RESET} ${DIM}AGENTS.md (registered /tutor command in .agents/skills)${RESET}`);
 }
 
 console.log(`${CYAN}│${RESET}`);

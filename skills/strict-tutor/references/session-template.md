@@ -4,6 +4,7 @@
 
 ## Session Control
 - **Topic:** [Topic / Keyword Name]
+- **Domain Breadcrumb:** [Parent Domain] > [Sub-domain] > [Topic]
 - **Mode:** [ADAPTIVE (Default) | STRICT]
 - **Current Focus:** [Active Concept or Dimension]
 - **Status:** [IN_PROGRESS | COMPLETED | PAUSED]
@@ -21,6 +22,14 @@
 | **Dimension 5: Synthesis & Transfer** | `UNASSESSED` | - | [Independent application to novel scenario or Feynman explanation] |
 
 *Evidence Levels: `UNASSESSED` (Not evaluated) | `INTRODUCED` (Explained by tutor) | `ASSISTED` (Solved with hints) | `INDEPENDENT` (Solved without assistance)*
+
+---
+
+## Knowledge Compass & Trajectory History
+
+| Milestone / Concept | Trajectory Chosen | Target Concept | Outer Fringe Candidates Available |
+|---|---|---|---|
+| [Initial Topic] | [Deep-Dive / Broaden / Apply / Custom] | [Next Target] | 1. [Deep-dive], 2. [Broaden], 3. [Apply] |
 
 ---
 
