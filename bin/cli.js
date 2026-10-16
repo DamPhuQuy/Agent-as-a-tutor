@@ -136,16 +136,12 @@ function copyDirRecursive(src, dest, overwrite, onFile) {
 
 console.log(`${CYAN}◇${RESET}  ${BOLD}Installing to agent directories...${RESET}`);
 
-// Target directories
-const targetAgentsSkill = path.join(targetDir, '.agents', 'skills', 'strict-tutor');
+// Target directory (Single Source of Truth)
 const targetSkillsSkill = path.join(targetDir, 'skills', 'strict-tutor');
 
 // Track installed files for pretty reporting
 const installedFiles = new Set();
 
-copyDirRecursive(sourceSkillDir, targetAgentsSkill, isForce, (f) => {
-  installedFiles.add(path.relative(targetDir, f));
-});
 copyDirRecursive(sourceSkillDir, targetSkillsSkill, isForce, (f) => {
   installedFiles.add(path.relative(targetDir, f));
 });
@@ -182,11 +178,10 @@ if (fs.existsSync(targetAgentsMd)) {
 // Print installed file list with clack bullets
 const fileList = Array.from(installedFiles);
 const previewFiles = [
-  '.agents/skills/strict-tutor/SKILL.md',
-  '.agents/skills/strict-tutor/references/pedagogy-rubric.md',
-  '.agents/skills/strict-tutor/references/anti-cargo-cult-rules.md',
-  '.agents/skills/strict-tutor/references/session-template.md',
-  'skills/strict-tutor/SKILL.md'
+  'skills/strict-tutor/SKILL.md',
+  'skills/strict-tutor/references/pedagogy-rubric.md',
+  'skills/strict-tutor/references/anti-cargo-cult-rules.md',
+  'skills/strict-tutor/references/session-template.md'
 ];
 
 previewFiles.forEach(pf => {
