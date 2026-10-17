@@ -108,9 +108,9 @@ console.log(`${CYAN}◇${RESET}  ${BOLD}Installation Scope:${RESET} ${BOLD}${rel
 console.log(`${CYAN}│${RESET}`);
 
 // 1. Verify source exists
-let sourceSkillDir = path.join(PKG_ROOT, '.agents', 'skills', 'strict-tutor');
+let sourceSkillDir = path.join(PKG_ROOT, 'skills', 'strict-tutor');
 if (!fs.existsSync(sourceSkillDir)) {
-  sourceSkillDir = path.join(PKG_ROOT, 'skills', 'strict-tutor');
+  sourceSkillDir = path.join(PKG_ROOT, '.agents', 'skills', 'strict-tutor');
 }
 if (!fs.existsSync(sourceSkillDir)) {
   console.log(`${RED}└  Error: Cannot find source skill directory at ${sourceSkillDir}${RESET}`);
