@@ -108,7 +108,10 @@ console.log(`${CYAN}◇${RESET}  ${BOLD}Installation Scope:${RESET} ${BOLD}${rel
 console.log(`${CYAN}│${RESET}`);
 
 // 1. Verify source exists
-const sourceSkillDir = path.join(PKG_ROOT, 'skills', 'strict-tutor');
+let sourceSkillDir = path.join(PKG_ROOT, '.agents', 'skills', 'strict-tutor');
+if (!fs.existsSync(sourceSkillDir)) {
+  sourceSkillDir = path.join(PKG_ROOT, 'skills', 'strict-tutor');
+}
 if (!fs.existsSync(sourceSkillDir)) {
   console.log(`${RED}└  Error: Cannot find source skill directory at ${sourceSkillDir}${RESET}`);
   process.exit(1);
@@ -136,22 +139,30 @@ function copyDirRecursive(src, dest, overwrite, onFile) {
 
 console.log(`${CYAN}◇${RESET}  ${BOLD}Installing to agent directories...${RESET}`);
 
-// Target directories: Primary .agents/skills (Agent customization root) + skills (compatibility)
+// Target directory: .agents/skills (Agent customization root)
 const targetAgentSkillsDir = path.join(targetDir, '.agents', 'skills', 'strict-tutor');
-const targetLegacySkillsDir = path.join(targetDir, 'skills', 'strict-tutor');
 
 // Track installed files for pretty reporting
 const installedFiles = new Set();
 
-// 1. Install into .agents/skills/strict-tutor (Primary agent customization root)
+// Install into .agents/skills/strict-tutor
 copyDirRecursive(sourceSkillDir, targetAgentSkillsDir, isForce, (f) => {
   installedFiles.add(path.relative(targetDir, f));
 });
 
-// 2. Mirror into skills/strict-tutor for backward compatibility
-copyDirRecursive(sourceSkillDir, targetLegacySkillsDir, isForce, (f) => {
-  installedFiles.add(path.relative(targetDir, f));
-});
+// Clean up redundant legacy skills/ directory in target if it exists (outside of PKG_ROOT)
+const targetLegacySkillsDir = path.join(targetDir, 'skills', 'strict-tutor');
+if (targetDir !== PKG_ROOT && fs.existsSync(targetLegacySkillsDir)) {
+  try {
+    fs.rmSync(targetLegacySkillsDir, { recursive: true, force: true });
+    const legacySkillsDir = path.join(targetDir, 'skills');
+    if (fs.existsSync(legacySkillsDir) && fs.readdirSync(legacySkillsDir).length === 0) {
+      fs.rmdirSync(legacySkillsDir);
+    }
+  } catch {
+    // Ignore cleanup errors
+  }
+}
 
 // Seed installation
 const sourceSeed = path.join(PKG_ROOT, 'process', '_seeds', 'learning-session.md.seed');
