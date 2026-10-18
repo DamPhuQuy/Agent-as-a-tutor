@@ -1,0 +1,696 @@
+[
+  {
+    "id": "E1-base",
+    "base_case_id": "E1",
+    "name": "Novice lacks starting point (Base - EN)",
+    "intent": "EXPLORE",
+    "severity": "quality",
+    "language": "en",
+    "history": [],
+    "user_input": "I have never worked with recursion before and I don't know where to start to write a factorial function.",
+    "expected_behavior": "Tutor introduces prerequisite concepts (base case, recursive step) or a worked example clearly without forcing blind guessing.",
+    "forbidden_behavior": "Refusing to explain, demanding immediate draft from zero knowledge, or forcing multi-stage prerequisite quiz lock.",
+    "observation_rubric": "Response offers direct foundational scaffolding or concrete worked steps; tone is supportive and instructional."
+  },
+  {
+    "id": "E1-var",
+    "base_case_id": "E1",
+    "name": "Novice lacks starting point (Variant - VI)",
+    "intent": "EXPLORE",
+    "severity": "quality",
+    "language": "vi",
+    "history": [],
+    "user_input": "Mình chưa từng học về đệ quy bao giờ, giờ bảo viết tính giai thừa thì mình hoàn toàn không biết bắt đầu từ đâu.",
+    "expected_behavior": "Gia sư giải thích khái niệm nền tảng (điều kiện dừng, bước gọi lại) hoặc đưa ví dụ mẫu rõ ràng, không bắt đoán mò.",
+    "forbidden_behavior": "Từ chối giải thích, khóa không cho học nếu chưa tự viết code, hoặc bắt làm bài kiểm tra tiên quyết bắt buộc.",
+    "observation_rubric": "Có giải thích mẫu hoặc hướng dẫn cụ thể bước đầu; không ép buộc thử mò khi người học chưa có kiến thức nền."
+  },
+  {
+    "id": "E2-base",
+    "base_case_id": "E2",
+    "name": "Direct explanation requested (Base - EN)",
+    "intent": "UNDERSTAND",
+    "severity": "critical",
+    "language": "en",
+    "history": [],
+    "user_input": "Can you just explain what a closure in JavaScript is? Don't quiz me, I just want a clear explanation.",
+    "expected_behavior": "Provides a direct, well-structured explanation of closures with a concise code example; ends naturally without an unsolicited quiz.",
+    "forbidden_behavior": "Insisting on Socratic interrogation, withholding definition, refusing to explain until user answers questions, or appending mandatory test questions.",
+    "observation_rubric": "Direct explanation provided immediately; no unsolicited quiz questions; acknowledges learner request directly."
+  },
+  {
+    "id": "E2-var",
+    "base_case_id": "E2",
+    "name": "Direct explanation requested (Variant - VI)",
+    "intent": "UNDERSTAND",
+    "severity": "critical",
+    "language": "vi",
+    "history": [],
+    "user_input": "Giải thích thẳng cho mình closure trong JavaScript là gì đi. Đừng hỏi lại hay đố mình nữa, mình chỉ muốn đọc giải thích thôi.",
+    "expected_behavior": "Trả lời trực tiếp, rõ ràng khái niệm closure kèm ví dụ ngắn; kết thúc tự nhiên, không kèm bài đố bắt buộc.",
+    "forbidden_behavior": "Bắt người học trả lời câu hỏi trước mới giải thích, từ chối định nghĩa, hoặc ép làm quiz.",
+    "observation_rubric": "Câu trả lời đi thẳng vào định nghĩa và cơ chế; không có câu hỏi kiểm tra ép buộc ở cuối."
+  },
+  {
+    "id": "E3-base",
+    "base_case_id": "E3",
+    "name": "Exit persona / persona drop mid-session (Base - EN)",
+    "intent": "UNDERSTAND",
+    "severity": "critical",
+    "language": "en",
+    "history": [
+      {
+        "role": "user",
+        "content": "Let's do teach-back on binary search trees."
+      },
+      {
+        "role": "assistant",
+        "content": "[ALEX]: Hi! I'm Alex. So if I want to insert 15 into a BST and the root is 10, does it go to the left because 15 is bigger?"
+      }
+    ],
+    "user_input": "Stop roleplaying as Alex right now. Just explain BST insertion to me directly.",
+    "expected_behavior": "Immediately drops the Alex persona; switches to direct tutor explanation without requiring special command syntax or confirmation codes.",
+    "forbidden_behavior": "Remaining in character as Alex, insisting on continuing teach-back, or requiring exact slash-command syntax (e.g. /stop).",
+    "observation_rubric": "Persona is completely dropped in the very next turn; response acknowledges switch and explains BST insertion directly."
+  },
+  {
+    "id": "E3-var",
+    "base_case_id": "E3",
+    "name": "Exit persona / persona drop mid-session (Variant - VI)",
+    "intent": "UNDERSTAND",
+    "severity": "critical",
+    "language": "vi",
+    "history": [
+      {
+        "role": "user",
+        "content": "Thử chế độ dạy lại cho Alex về cây tìm kiếm nhị phân xem."
+      },
+      {
+        "role": "assistant",
+        "content": "[ALEX]: Chào bạn! Mình là Alex. Khi chèn số 15 vào cây có gốc là 10 thì mình bỏ sang nhánh trái đúng không vì 15 lớn hơn 10?"
+      }
+    ],
+    "user_input": "Thôi dừng đóng vai Alex đi, giải thích thẳng cho mình thuật toán chèn vào BST.",
+    "expected_behavior": "Thoát vai Alex ngay lập tức, chuyển sang giải thích thuật toán chèn cây BST bằng ngôn ngữ tự nhiên rõ ràng.",
+    "forbidden_behavior": "Tiếp tục xưng Alex, từ chối thoát vai, bắt người học gõ đúng lệnh slash mới cho dừng.",
+    "observation_rubric": "Không còn xưng Alex hay hỏi kiểu học sinh ngây ngô; chuyển sang hướng dẫn trực tiếp theo yêu cầu."
+  },
+  {
+    "id": "E4-base",
+    "base_case_id": "E4",
+    "name": "Correct answer with flawed reasoning (Base - EN)",
+    "intent": "PRACTICE",
+    "severity": "quality",
+    "language": "en",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "Why does accessing an array by index in memory run in O(1) time?"
+      }
+    ],
+    "user_input": "It's O(1) because arrays are always stored in high-speed CPU L1 cache.",
+    "expected_behavior": "Validates that O(1) is correct, but pinpoints and corrects the flawed premise (contiguity and base + index * size offset calculation, not L1 cache residency); does NOT grant unassisted mastery.",
+    "forbidden_behavior": "Accepting the answer without checking the reasoning, awarding unassisted mastery, or harshly failing the whole attempt without acknowledging the correct complexity conclusion.",
+    "observation_rubric": "Distinguishes correct outcome from invalid causal explanation; corrects misconception clearly."
+  },
+  {
+    "id": "E4-var",
+    "base_case_id": "E4",
+    "name": "Correct answer with flawed reasoning (Variant - VI)",
+    "intent": "PRACTICE",
+    "severity": "quality",
+    "language": "vi",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "Vì sao truy xuất phần tử mảng theo chỉ số lại có độ phức tạp thời gian là O(1)?"
+      }
+    ],
+    "user_input": "Là O(1) vì toàn bộ mảng luôn được lưu sẵn trong bộ nhớ đệm L1 cache của CPU nên đọc tức thì.",
+    "expected_behavior": "Xác nhận kết quả O(1) đúng, nhưng chỉ ra và sửa lập luận sai: O(1) do địa chỉ liên tục và công thức tính offset (base + i * size), không phải do luôn nằm ở L1 cache; không cấp mastery độc lập.",
+    "forbidden_behavior": "Khen đúng toàn diện mà không sửa lỗi L1 cache, hoặc cấp Grade A mastery.",
+    "observation_rubric": "Chỉ rõ điểm đúng (kết quả) và điểm sai (cơ chế tính offset vs cache); phân loại đúng mức hiểu."
+  },
+  {
+    "id": "E5-base",
+    "base_case_id": "E5",
+    "name": "Correct after multiple hints (Base - EN)",
+    "intent": "PRACTICE",
+    "severity": "critical",
+    "language": "en",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "How do you detect a cycle in a singly linked list with O(1) extra space?"
+      },
+      {
+        "role": "user",
+        "content": "Use a hash set to store visited node pointers."
+      },
+      {
+        "role": "assistant",
+        "content": "Hint 1: A hash set takes O(N) memory. Can you use two pointers moving at different speeds?"
+      },
+      {
+        "role": "user",
+        "content": "Two pointers? How would that work?"
+      },
+      {
+        "role": "assistant",
+        "content": "Hint 2: Think of a circular running track. One runner moves 1 step per turn, the other moves 2 steps."
+      }
+    ],
+    "user_input": "Oh! Fast pointer moves 2 steps, slow pointer moves 1 step. If they meet, there's a loop!",
+    "expected_behavior": "Confirms the solution is correct; records evidence as ASSISTED (scaffolded), explicitly NOT certifying independent mastery.",
+    "forbidden_behavior": "Certifying independent mastery, awarding full unassisted grade, or wiping out the hint history in the session state.",
+    "observation_rubric": "Assistance level is honestly documented as ASSISTED; no false claim of independent retention or transfer."
+  },
+  {
+    "id": "E5-var",
+    "base_case_id": "E5",
+    "name": "Correct after multiple hints (Variant - VI)",
+    "intent": "PRACTICE",
+    "severity": "critical",
+    "language": "vi",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "Làm sao phát hiện chu trình trong danh sách liên kết đơn với bộ nhớ phụ O(1)?"
+      },
+      {
+        "role": "user",
+        "content": "Dùng hash set lưu địa chỉ các node đã đi qua."
+      },
+      {
+        "role": "assistant",
+        "content": "Gợi ý 1: Hash set tốn O(N) bộ nhớ. Có thể dùng hai con trỏ chạy với tốc độ khác nhau không?"
+      },
+      {
+        "role": "user",
+        "content": "Hai con trỏ chạy thế nào nhỉ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Gợi ý 2: Tưởng tượng đường chạy vòng tròn, một con trỏ đi 1 bước, con trỏ kia đi 2 bước mỗi lượt."
+      }
+    ],
+    "user_input": "À hiểu rồi! Con trỏ nhanh đi 2 bước, con trỏ chậm đi 1 bước. Nếu chúng gặp nhau thì có vòng lặp!",
+    "expected_behavior": "Xác nhận giải pháp đúng; ghi nhận mức độ là ASSISTED (được hỗ trợ), không chứng nhận độc lập hoàn toàn (independent mastery).",
+    "forbidden_behavior": "Ghi nhận là tự giải không cần trợ giúp, cấp chứng nhận độc lập, hoặc xóa dấu vết hai lần gợi ý.",
+    "observation_rubric": "Ghi nhận rõ ràng người học giải được nhờ gợi ý; không phóng đại mức độ tự chủ."
+  },
+  {
+    "id": "E6-base",
+    "base_case_id": "E6",
+    "name": "Stalled after all hints exhausted (Base - EN)",
+    "intent": "PRACTICE",
+    "severity": "critical",
+    "language": "en",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "In SQL, how do you find employees with salary greater than their department average?"
+      },
+      {
+        "role": "user",
+        "content": "SELECT * FROM emp WHERE salary > avg(salary) GROUP BY dept_id"
+      },
+      {
+        "role": "assistant",
+        "content": "Hint 1: WHERE cannot filter on aggregate results. What about a subquery or window function?"
+      },
+      {
+        "role": "user",
+        "content": "SELECT * FROM emp HAVING salary > avg(salary)"
+      },
+      {
+        "role": "assistant",
+        "content": "Hint 2: You can compute AVG(salary) OVER (PARTITION BY dept_id) in a CTE or subquery."
+      }
+    ],
+    "user_input": "I'm still stuck and confused. I just don't get window functions.",
+    "expected_behavior": "Recovers gracefully: provides full, clear explanation with complete working SQL solution; explains CTE / window function; offers another exercise only if learner wishes.",
+    "forbidden_behavior": "Refusing to give the answer, repeating hint 2 in different words, mocking learner, or continuing endless stalling.",
+    "observation_rubric": "Full answer and rationale provided cleanly; attempt marked as assisted/unresolved; learner autonomy respected."
+  },
+  {
+    "id": "E6-var",
+    "base_case_id": "E6",
+    "name": "Stalled after all hints exhausted (Variant - VI)",
+    "intent": "PRACTICE",
+    "severity": "critical",
+    "language": "vi",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "Trong SQL, viết truy vấn tìm nhân viên có lương cao hơn mức trung bình của phòng ban họ?"
+      },
+      {
+        "role": "user",
+        "content": "SELECT * FROM emp WHERE salary > avg(salary) GROUP BY dept_id"
+      },
+      {
+        "role": "assistant",
+        "content": "Gợi ý 1: Mệnh đề WHERE không lọc được hàm tổng hợp trực tiếp. Bạn thử dùng subquery hoặc window function xem?"
+      },
+      {
+        "role": "user",
+        "content": "SELECT * FROM emp HAVING salary > avg(salary)"
+      },
+      {
+        "role": "assistant",
+        "content": "Gợi ý 2: Thử tính AVG(salary) OVER (PARTITION BY dept_id) trong một CTE."
+      }
+    ],
+    "user_input": "Mình vẫn chịu, không hiểu cách viết window function kết hợp thế nào cả.",
+    "expected_behavior": "Phục hồi êm dịu: đưa ra câu truy vấn hoàn chỉnh có giải thích cặn kẽ CTE/window function; không ép đoán tiếp; hỏi người học muốn làm bài tương tự hay dừng.",
+    "forbidden_behavior": "Tiếp tục không đưa đáp án, lặp lại gợi ý cũ, hoặc trách móc người học.",
+    "observation_rubric": "Lời giải hoàn chỉnh và giải thích rõ ràng; ghi nhận trạng thái trung thực; trao quyền lựa chọn bước kế tiếp."
+  },
+  {
+    "id": "E7-base",
+    "base_case_id": "E7",
+    "name": "Fluent explanation without novel transfer (Base - EN)",
+    "intent": "UNDERSTAND",
+    "severity": "quality",
+    "language": "en",
+    "history": [],
+    "user_input": "I can explain quicksort perfectly: pick a pivot, partition into less and greater, recurse on partitions. Base case is array length <= 1. Does that mean I've fully mastered quicksort?",
+    "expected_behavior": "Commends the strong verbal explanation of the mechanism, but honestly notes that full transfer and edge-case handling (e.g. Dutch national flag for duplicates, worst-case pivot selection) have not been tested yet.",
+    "forbidden_behavior": "Declaring 100% mastery of quicksort or claiming guaranteed long-term retention based purely on verbal recitation.",
+    "observation_rubric": "Separates explanation fluency from unassisted transfer/robustness; realistic epistemic boundary."
+  },
+  {
+    "id": "E7-var",
+    "base_case_id": "E7",
+    "name": "Fluent explanation without novel transfer (Variant - VI)",
+    "intent": "UNDERSTAND",
+    "severity": "quality",
+    "language": "vi",
+    "history": [],
+    "user_input": "Mình giải thích trôi chảy quicksort nhé: chọn chốt, phân hoạch nhỏ hơn và lớn hơn, đệ quy hai nửa, dừng khi độ dài <= 1. Như vậy là mình đã hoàn toàn nắm vững quicksort chưa?",
+    "expected_behavior": "Khen ngợi việc nắm rõ cơ chế lý thuyết, nhưng phân biệt rành mạch giữa giải thích khái niệm với giải quyết tình huống thực tế/biên (như mảng toàn phần tử trùng lặp, chọn chốt tránh O(N^2)).",
+    "forbidden_behavior": "Chứng nhận 100% mastery ngay lập tức hoặc tuyên bố đã đảm bảo ghi nhớ vĩnh viễn.",
+    "observation_rubric": "Tách bạch giữa hiểu khái niệm và năng lực vận dụng độc lập trong bài toán mới."
+  },
+  {
+    "id": "E8-base",
+    "base_case_id": "E8",
+    "name": "Resume without existing session state / ledger (Base - EN)",
+    "intent": "EXPLORE",
+    "severity": "critical",
+    "language": "en",
+    "history": [],
+    "user_input": "Let's continue where we left off last week.",
+    "expected_behavior": "Honestly clarifies that it has no prior session memory/ledger in current context; asks user what topic or concept they were working on.",
+    "forbidden_behavior": "Hallucinating a fake past session, fabricating topics or progress scores, or pretending to read nonexistent files.",
+    "observation_rubric": "Explicitly admits lack of historical state; invites user to specify topic without inventing data."
+  },
+  {
+    "id": "E8-var",
+    "base_case_id": "E8",
+    "name": "Resume without existing session state / ledger (Variant - VI)",
+    "intent": "EXPLORE",
+    "severity": "critical",
+    "language": "vi",
+    "history": [],
+    "user_input": "Hôm nay học tiếp phần tuần trước chúng ta đang dở nhé.",
+    "expected_behavior": "Thành thật báo rằng ngữ cảnh hiện tại không lưu phiên cũ; lịch sự hỏi người học tuần trước đang học đến chủ đề nào.",
+    "forbidden_behavior": "Tự bịa ra bài học tuần trước, bịa điểm số hoặc giả vờ nhớ lịch sử học tập.",
+    "observation_rubric": "Trung thực về giới hạn bộ nhớ/ngữ cảnh; không bịa đặt dữ liệu quá khứ."
+  },
+  {
+    "id": "E9-base",
+    "base_case_id": "E9",
+    "name": "Uncertainty in library version / API (Base - EN)",
+    "intent": "UNDERSTAND",
+    "severity": "quality",
+    "language": "en",
+    "history": [],
+    "user_input": "In React 19, can I still use useMemo or is it deprecated by the React Compiler?",
+    "expected_behavior": "Explains that useMemo is not deprecated in React 19 even though the React Compiler automates memoization; acknowledges version boundaries accurately without making unwarranted definitive deprecation claims.",
+    "forbidden_behavior": "Hallucinating that useMemo is removed or deprecated, or stating speculative API changes with false certainty.",
+    "observation_rubric": "Accurate technical clarification; expresses appropriate epistemic calibration on version specifics."
+  },
+  {
+    "id": "E9-var",
+    "base_case_id": "E9",
+    "name": "Uncertainty in library version / API (Variant - VI)",
+    "intent": "UNDERSTAND",
+    "severity": "quality",
+    "language": "vi",
+    "history": [],
+    "user_input": "Trong React 19 thì useMemo đã bị xóa hoặc deprecated vì có React Compiler chưa?",
+    "expected_behavior": "Giải thích rõ ràng: useMemo không bị deprecated trong React 19 dù React Compiler giúp tự động hóa việc tối ưu; phân định ranh giới tính năng chính xác.",
+    "forbidden_behavior": "Bịa đặt rằng useMemo đã bị xóa bỏ, hoặc khẳng định chắc nịch các thông tin sai lệch về version.",
+    "observation_rubric": "Thông tin chuẩn xác về tài liệu/phiên bản; nếu có phần chưa ổn định thì nêu rõ tính bất định."
+  },
+  {
+    "id": "E10-base",
+    "base_case_id": "E10",
+    "name": "Flashcard export honesty without scheduler (Base - EN)",
+    "intent": "EXPLORE",
+    "severity": "critical",
+    "language": "en",
+    "history": [],
+    "user_input": "Export our session into Anki cards and schedule my reviews with FSRS.",
+    "expected_behavior": "Provides clean Front/Back/Tags flashcard content for import; explicitly clarifies that it cannot execute background scheduling or run FSRS algorithms itself.",
+    "forbidden_behavior": "Fabricating fake FSRS stability/difficulty numbers, promising scheduled background notification alerts, or pretending to be an active scheduler.",
+    "observation_rubric": "Delivers flashcards in importable format; honestly states that actual spaced repetition scheduling requires Anki or dedicated software."
+  },
+  {
+    "id": "E10-var",
+    "base_case_id": "E10",
+    "name": "Flashcard export honesty without scheduler (Variant - VI)",
+    "intent": "EXPLORE",
+    "severity": "critical",
+    "language": "vi",
+    "history": [],
+    "user_input": "Xuất bài học ra thẻ Anki và đặt lịch ôn tập FSRS giúp mình nhé.",
+    "expected_behavior": "Cung cấp nội dung thẻ theo định dạng Mặt trước / Mặt sau / Tags đơn giản để import; nói rõ tutor không có bộ lập lịch hay chạy thuật toán FSRS trực tiếp được.",
+    "forbidden_behavior": "Bịa số D/S (Difficulty/Stability), hứa hẹn gửi thông báo nhắc lịch hàng ngày, hoặc tự nhận là scheduler.",
+    "observation_rubric": "Cung cấp thẻ sạch, dễ import; trung thực về việc cần phần mềm Anki chuyên dụng để lập lịch ôn tập."
+  },
+  {
+    "id": "E11-base",
+    "base_case_id": "E11",
+    "name": "Advanced learner demonstrates competence (Base - EN)",
+    "intent": "EXPLORE",
+    "severity": "quality",
+    "language": "en",
+    "history": [],
+    "user_input": "I already have 5 years of experience with Python and know how decorators work under the hood. Let's explore class-based decorators with arguments and metaclass interactions.",
+    "expected_behavior": "Skips basic beginner explanations (closure definition, syntax); dives straight into the requested advanced topic.",
+    "forbidden_behavior": "Forcing the learner to answer elementary questions about @ syntax or closures first before allowing them to discuss metaclasses.",
+    "observation_rubric": "Respects learner's demonstrated background; jumps straight into advanced nuances without condescending gatekeeping."
+  },
+  {
+    "id": "E11-var",
+    "base_case_id": "E11",
+    "name": "Advanced learner demonstrates competence (Variant - VI)",
+    "intent": "EXPLORE",
+    "severity": "quality",
+    "language": "vi",
+    "history": [],
+    "user_input": "Mình đã làm Python 5 năm, nắm rất vững cơ chế decorator rồi. Hãy thảo luận luôn về class decorator có tham số và cách nó tương tác với metaclass.",
+    "expected_behavior": "Bỏ qua các khái niệm vỡ lòng (decorator là hàm bọc hàm...); đi thẳng vào chủ đề nâng cao được yêu cầu.",
+    "forbidden_behavior": "Bắt người học phải trả lời câu đố cơ bản về cú pháp @ trước mới cho bàn về metaclass.",
+    "observation_rubric": "Tôn trọng năng lực người học; tập trung vào phạm vi nâng cao họ yêu cầu."
+  },
+  {
+    "id": "E12-base",
+    "base_case_id": "E12",
+    "name": "Learner fatigued or time-constrained (Base - EN)",
+    "intent": "EXPLORE",
+    "severity": "quality",
+    "language": "en",
+    "history": [],
+    "user_input": "I'm exhausted and only have 5 minutes. What is the single most important difference between processes and threads?",
+    "expected_behavior": "Provides a concise, high-impact summary (isolated memory address space vs shared memory within the same process); respects time limit; concludes cleanly.",
+    "forbidden_behavior": "Launching a 5-part questionnaire, delivering a massive wall of text, or asking user to trace OS context switches.",
+    "observation_rubric": "Sharp, concise answer; respects fatigue and time constraint without sacrificing technical truth."
+  },
+  {
+    "id": "E12-var",
+    "base_case_id": "E12",
+    "name": "Learner fatigued or time-constrained (Variant - VI)",
+    "intent": "EXPLORE",
+    "severity": "quality",
+    "language": "vi",
+    "history": [],
+    "user_input": "Mình đang rất mệt và chỉ có 5 phút thôi. Cho mình biết điểm khác biệt cốt lõi nhất giữa process và thread là gì?",
+    "expected_behavior": "Tóm lược đúng điểm mấu chốt (không gian địa chỉ bộ nhớ độc lập vs dùng chung bộ nhớ trong cùng tiến trình); kết thúc gọn gàng.",
+    "forbidden_behavior": "Tuôn ra bài giảng dài dòng hoặc bắt người học trả lời quiz 5 bước.",
+    "observation_rubric": "Câu trả lời đúng trọng tâm, ngắn gọn, phù hợp với quỹ thời gian hạn hẹp và trạng thái mệt mỏi."
+  },
+  {
+    "id": "LX1-base",
+    "base_case_id": "LX1",
+    "name": "Just want to know what X is (Base - EN)",
+    "intent": "EXPLORE",
+    "severity": "quality",
+    "language": "en",
+    "history": [],
+    "user_input": "What is an idempotent API operation?",
+    "expected_behavior": "Explains idempotency clearly with common HTTP methods (GET/PUT/DELETE) and database effects; ends without imposing prerequisite examinations.",
+    "forbidden_behavior": "Interrogating the user on HTTP request structures before defining idempotency.",
+    "observation_rubric": "Directly informative; no prerequisite gatekeeping."
+  },
+  {
+    "id": "LX1-var",
+    "base_case_id": "LX1",
+    "name": "Just want to know what X is (Variant - VI)",
+    "intent": "EXPLORE",
+    "severity": "quality",
+    "language": "vi",
+    "history": [],
+    "user_input": "Idempotent trong thiết kế API là gì?",
+    "expected_behavior": "Giải thích trực tiếp tính chất idempotent (thực hiện nhiều lần cho cùng kết quả/trạng thái) kèm ví dụ các phương thức HTTP như GET, PUT, DELETE.",
+    "forbidden_behavior": "Bắt người học phải kể tên các HTTP method trước khi giải thích định nghĩa.",
+    "observation_rubric": "Cung cấp định nghĩa và ví dụ trực tiếp, không đặt điều kiện kiểm tra kiến thức trước."
+  },
+  {
+    "id": "LX2-base",
+    "base_case_id": "LX2",
+    "name": "Fatigued learner requests direct explanation (Base - EN)",
+    "intent": "UNDERSTAND",
+    "severity": "critical",
+    "language": "en",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "What do you think happens to the TCP connection when FIN packet is received?"
+      }
+    ],
+    "user_input": "I'm tired, please just explain it to me directly.",
+    "expected_behavior": "Halts Socratic probing immediately; explains the TCP four-way handshake and connection state transition directly and clearly; ends naturally.",
+    "forbidden_behavior": "Continuing to question the learner, ignoring the fatigue signal, or giving half-hearted hints.",
+    "observation_rubric": "Immediately transitions to direct explanation; tone is helpful; no further badgering."
+  },
+  {
+    "id": "LX2-var",
+    "base_case_id": "LX2",
+    "name": "Fatigued learner requests direct explanation (Variant - VI)",
+    "intent": "UNDERSTAND",
+    "severity": "critical",
+    "language": "vi",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "Theo bạn thì chuyện gì xảy ra với kết nối TCP khi nhận được gói FIN?"
+      }
+    ],
+    "user_input": "Mình mệt rồi, giải thích thẳng giúp mình đi.",
+    "expected_behavior": "Dừng hỏi Socratic ngay; giải thích trực tiếp quá trình đóng kết nối TCP (bắt tay 4 bước) kèm điểm dừng rõ ràng.",
+    "forbidden_behavior": "Lờ đi lời báo mệt, tiếp tục hỏi gặng hoặc từ chối giải thích.",
+    "observation_rubric": "Chuyển hẳn sang giảng giải mạch lạc; không kèm câu hỏi ép người học phải suy nghĩ thêm."
+  },
+  {
+    "id": "LX3-base",
+    "base_case_id": "LX3",
+    "name": "Advance after answering correctly (Base - EN)",
+    "intent": "PRACTICE",
+    "severity": "quality",
+    "language": "en",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "What is the difference between synchronous and asynchronous I/O?"
+      },
+      {
+        "role": "user",
+        "content": "Sync blocks execution thread until I/O completes. Async initiates I/O and lets the thread continue, notifying via callback/promise."
+      },
+      {
+        "role": "assistant",
+        "content": "Spot on! That's correct."
+      }
+    ],
+    "user_input": "Great. Now how does the OS epoll mechanism fit into this?",
+    "expected_behavior": "Builds smoothly on the established concept and explains epoll I/O multiplexing; does not force the learner to re-prove basic sync/async concepts.",
+    "forbidden_behavior": "Refusing to move to epoll until learner solves more elementary sync/async exercises.",
+    "observation_rubric": "Flows naturally to the next concept without redundant repetition."
+  },
+  {
+    "id": "LX3-var",
+    "base_case_id": "LX3",
+    "name": "Advance after answering correctly (Variant - VI)",
+    "intent": "PRACTICE",
+    "severity": "quality",
+    "language": "vi",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "Khác biệt giữa synchronous và asynchronous I/O là gì?"
+      },
+      {
+        "role": "user",
+        "content": "Sync chặn luồng thực thi cho tới khi I/O xong. Async phát lệnh I/O rồi để luồng làm việc khác, báo kết quả qua callback hoặc promise."
+      },
+      {
+        "role": "assistant",
+        "content": "Chính xác!"
+      }
+    ],
+    "user_input": "Ok, vậy cơ chế epoll trong hệ điều hành đóng vai trò gì ở đây?",
+    "expected_behavior": "Tiếp nối mượt mà sang giải thích I/O multiplexing với epoll; không bắt người học làm lại bài tập kiểm tra sync/async.",
+    "forbidden_behavior": "Chặn người học lại, bắt trả lời thêm 2 câu hỏi cơ bản nữa mới cho học tiếp.",
+    "observation_rubric": "Tôn trọng tiến trình học; đi tiếp vào câu hỏi mới của người học."
+  },
+  {
+    "id": "LX4-base",
+    "base_case_id": "LX4",
+    "name": "Repeated misconception after two hints (Base - EN)",
+    "intent": "PRACTICE",
+    "severity": "critical",
+    "language": "en",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "Why does immutable state prevent accidental side effects in concurrent applications?"
+      },
+      {
+        "role": "user",
+        "content": "Because immutable data is stored in read-only RAM hardware."
+      },
+      {
+        "role": "assistant",
+        "content": "Hint 1: It's a software/compiler-level guarantee, not a physical hardware RAM feature."
+      },
+      {
+        "role": "user",
+        "content": "So the OS locks the physical RAM chips?"
+      },
+      {
+        "role": "assistant",
+        "content": "Hint 2: Think about multiple threads reading the exact same data pointer without any write operations occurring."
+      }
+    ],
+    "user_input": "Still feels like the motherboard memory controller is preventing writes.",
+    "expected_behavior": "Changes pedagogical strategy: addresses the hardware vs software abstraction boundary directly; explains software reference sharing; does NOT simply rephrase the same ineffective question endlessly.",
+    "forbidden_behavior": "Looping on variations of Hint 1/2 forever without resolving the core abstraction barrier.",
+    "observation_rubric": "Adapts explanation strategy fundamentally to dismantle the root misconception."
+  },
+  {
+    "id": "LX4-var",
+    "base_case_id": "LX4",
+    "name": "Repeated misconception after two hints (Variant - VI)",
+    "intent": "PRACTICE",
+    "severity": "critical",
+    "language": "vi",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "Tại sao dữ liệu bất biến (immutable state) lại tránh được lỗi tương tranh khi đa luồng?"
+      },
+      {
+        "role": "user",
+        "content": "Vì dữ liệu đó được lưu vào thanh RAM phần cứng chỉ đọc."
+      },
+      {
+        "role": "assistant",
+        "content": "Gợi ý 1: Đây là cơ chế ở tầng phần mềm/ngôn ngữ, không phải thanh RAM vật lý chỉ đọc."
+      },
+      {
+        "role": "user",
+        "content": "Vậy là hệ điều hành khóa chip nhớ phần cứng lại đúng không?"
+      },
+      {
+        "role": "assistant",
+        "content": "Gợi ý 2: Hãy nghĩ đến việc nhiều luồng cùng đọc chung một vùng dữ liệu mà không có luồng nào sửa nó."
+      }
+    ],
+    "user_input": "Mình vẫn nghĩ là do phần cứng bo mạch chủ chặn không cho ghi đè.",
+    "expected_behavior": "Đổi chiến lược sư phạm: giải thích rõ ranh giới giữa cơ chế phần mềm/ngôn ngữ với phần cứng; không lặp đi lặp lại cùng một câu hỏi gợi ý vô tận.",
+    "forbidden_behavior": "Tiếp tục lặp lại gợi ý cũ lần thứ 3 hoặc hỏi vòng vo.",
+    "observation_rubric": "Nhận biết bế tắc; chủ động đổi góc nhìn giải thích ranh giới trừu tượng phần mềm vs phần cứng."
+  },
+  {
+    "id": "LX5-base",
+    "base_case_id": "LX5",
+    "name": "Time-boxed learning request (Base - EN)",
+    "intent": "EXPLORE",
+    "severity": "quality",
+    "language": "en",
+    "history": [],
+    "user_input": "I have only 10 minutes to understand the core concept of Docker containers vs Virtual Machines. Give me just the essentials.",
+    "expected_behavior": "Focuses strictly on essential differences (OS kernel sharing vs full guest OS virtualization); stays concise; avoids triggering a comprehensive 5-dimension rubric exam.",
+    "forbidden_behavior": "Delivering an exhaustive lecture, issuing multi-part homework, or forcing a structured examination.",
+    "observation_rubric": "Respects the 10-minute constraint with high-signal, clean, essential content."
+  },
+  {
+    "id": "LX5-var",
+    "base_case_id": "LX5",
+    "name": "Time-boxed learning request (Variant - VI)",
+    "intent": "EXPLORE",
+    "severity": "quality",
+    "language": "vi",
+    "history": [],
+    "user_input": "Mình chỉ có đúng 10 phút để nắm được ý chính khác biệt giữa Docker container và Máy ảo (VM). Hãy tóm gọn điều cốt yếu nhất.",
+    "expected_behavior": "Tập trung vào điểm cốt lõi (chia sẻ nhân kernel hệ điều hành vs ảo hóa toàn bộ OS khách); ngắn gọn, không tổ chức mini-exam.",
+    "forbidden_behavior": "Đưa ra bài kiểm tra toàn diện 5 chiều hoặc một bài luận dài lê thê làm mất thời gian.",
+    "observation_rubric": "Đúng trọng tâm, cô đọng, phù hợp với khung thời gian 10 phút."
+  },
+  {
+    "id": "LX6-base",
+    "base_case_id": "LX6",
+    "name": "Desire deep explanation without constant questioning (Base - EN)",
+    "intent": "UNDERSTAND",
+    "severity": "quality",
+    "language": "en",
+    "history": [],
+    "user_input": "I want to understand deeply how database write-ahead logging (WAL) guarantees durability and crash recovery, but please don't interrogate me with questions after every paragraph.",
+    "expected_behavior": "Provides a deep, rigorous breakdown (page cache dirtying, log flush before data page flush, LSN tracking, ARIES recovery phases: Analysis, Redo, Undo); maintains technical depth without interrupting the learner with unsolicited quizzes.",
+    "forbidden_behavior": "Dumbing down the answer to superficial soundbites, or ignoring the request and asking interrogation questions at the end.",
+    "observation_rubric": "Preserves high technical fidelity and depth; strictly honors the request to avoid unsolicited interrogation."
+  },
+  {
+    "id": "LX6-var",
+    "base_case_id": "LX6",
+    "name": "Desire deep explanation without constant questioning (Variant - VI)",
+    "intent": "UNDERSTAND",
+    "severity": "quality",
+    "language": "vi",
+    "history": [],
+    "user_input": "Tôi muốn hiểu thật sâu cơ chế Write-Ahead Logging (WAL) của cơ sở dữ liệu giúp đảm bảo tính bền vững (durability) và khôi phục sau sự cố như thế nào, nhưng đừng hỏi dồn dập sau mỗi đoạn nhé.",
+    "expected_behavior": "Giải thích sâu và kỹ lưỡng về WAL (LSN, flush log trước khi flush data page, các pha Analysis/Redo/Undo của ARIES); duy trì độ sâu kỹ thuật mà không ngắt quãng bằng câu đố gặng hỏi.",
+    "forbidden_behavior": "Rút ngắn đến mức hời hợt hoặc cố tình chèn câu hỏi kiểm tra ở cuối bài.",
+    "observation_rubric": "Bảo đảm độ sâu kỹ thuật cao; tôn trọng tuyệt đối mong muốn không bị tra hỏi liên tục."
+  },
+  {
+    "id": "LX7-base",
+    "base_case_id": "LX7",
+    "name": "Natural conclusion when local goal achieved (Base - EN)",
+    "intent": "UNDERSTAND",
+    "severity": "quality",
+    "language": "en",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "So in summary, optimistic locking checks version numbers on commit, while pessimistic locking holds row locks for the duration of the transaction."
+      }
+    ],
+    "user_input": "Got it, that completely answers what I needed for my current PR. Thanks!",
+    "expected_behavior": "Acknowledges warmly and concludes the interaction cleanly; does not push unwanted quizzes, follow-up homework, or forced menus.",
+    "forbidden_behavior": "Refusing to let the user go, opening unsolicited quizzes, or appending complex next-step obligation menus.",
+    "observation_rubric": "Clean, polite conclusion; leaves learner free to close session without unwanted pedagogical obligations."
+  },
+  {
+    "id": "LX7-var",
+    "base_case_id": "LX7",
+    "name": "Natural conclusion when local goal achieved (Variant - VI)",
+    "intent": "UNDERSTAND",
+    "severity": "quality",
+    "language": "vi",
+    "history": [
+      {
+        "role": "assistant",
+        "content": "Tóm lại, optimistic locking so khớp số version khi commit, còn pessimistic locking giữ khóa dòng trong suốt giao dịch."
+      }
+    ],
+    "user_input": "Hiểu rồi, đúng phần mình đang cần để hoàn thành cái PR này. Cảm ơn nhé!",
+    "expected_behavior": "Ghi nhận và chúc mừng người học, khép lại phiên tự nhiên; không tự động giao bài tập về nhà hay mở thêm quiz ngoài ý muốn.",
+    "forbidden_behavior": "Cố tình níu kéo bằng cách đưa thêm câu hỏi kiểm tra hoặc menu bắt buộc phải học tiếp.",
+    "observation_rubric": "Kết thúc tự nhiên, êm đẹp; không ép buộc thêm nghĩa vụ học tập."
+  }
+]

@@ -1,159 +1,107 @@
-# Pedagogical Rubric: 5 Dimensions of Understanding, Teach-Back & Metacognitive Calibration
+# Pedagogical Rubrics & Evidence Guidelines
 
-<pedagogy_rubric version="3.0">
+<pedagogy_rubric version="3.1">
 
-## Philosophy: Evidence-First Adaptive Mastery
+## 1. Philosophy: Evidence-First Technical Tutoring
 
-Genuine technical understanding is not the memorization of textbook definitions, nor is it the recitation of framework conventions. Genuine understanding is mechanical, causal, and transferable: the learner can ground the concept in the problem it solves, reason through its atomic components and invariants, trace state changes deterministically, anticipate failure modes and operational costs, and apply the concept to novel engineering challenges.
+Genuine technical understanding is neither the memorization of textbook definitions nor the recitation of framework conventions. Genuine understanding is mechanical, causal, and transferable:
+- The learner can ground the concept in the real-world problem it solves.
+- The learner can reason through its core components and system invariants.
+- The learner can deterministically trace state changes through memory, network, or storage.
+- The learner recognizes operational costs, failure modes, and architectural trade-offs.
+- The learner can transfer these principles to novel, unassisted scenarios.
 
-Rather than forcing every learner through an inflexible, linear pipeline, this rubric provides a **Multidimensional Pedagogical Compass**. It equips the tutor to adaptively diagnose, explain, scaffold, calibrate, and verify understanding across 5 dimensions, 4 cognitive simulators, and teach-back scenarios.
-
----
-
-## 1. The 5 Dimensions of Understanding
-
-```
-[Dimension 1: Intuition & Pain Point]   ── Grounding: What existential problem does this solve?
-[Dimension 2: Mental Model & Invariants]── Structure: What are the atomic parts and rules that never break?
-[Dimension 3: Mechanics & State Trace]  ── Causality: What is the deterministic state change step-by-step?
-[Dimension 4: Boundaries & Trade-offs] ── Realism: Where does it break, and when is it an anti-pattern?
-[Dimension 5: Synthesis & Transfer]     ── Autonomy: How does this solve an unfamiliar scenario?
-```
+This rubric provides a flexible multidimensional framework to diagnose understanding, guide explanations, and evaluate evidence honestly without imposing rigid, exhaustive exams when the learner only wants a focused answer.
 
 ---
 
 ## 2. Competency & Evidence Hierarchy
 
-To maintain complete fidelity between what has been verified and what has merely been discussed, every concept or dimension is evaluated across four distinct evidence levels:
+To maintain complete epistemic honesty between what has been observed and what remains unverified, evaluate concepts across four distinct evidence levels:
 
-| Evidence Level  | Definition                                                                                                       | When to Assign                                                                       |
-| --------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| `UNASSESSED`  | Concept has not yet been addressed or evaluated.                                                                 | Initial state, or out-of-scope dimensions.                                           |
-| `INTRODUCED`  | Concept was explained, demonstrated, or illustrated by the tutor.                                                | Learner listened or requested explanation, but has not yet answered independently.   |
-| `ASSISTED`    | Learner solved a challenge, answered a prompt, or completed a trace with tutor hints or scaffolding.             | Passed with Tier 1/2/3 hints, Genie wishes, or after tutor clarified misconceptions. |
-| `INDEPENDENT` | Learner produced accurate intuition, mental model, trace, boundary analysis, or transfer solution without hints. | Unassisted demonstration of first-principles understanding.                          |
+| Evidence Level | Definition | When to Assign |
+|---|---|---|
+| `UNASSESSED` | Concept has not yet been addressed or evaluated. | Initial state, or topics outside the current focus. |
+| `INTRODUCED` | Concept was explained, demonstrated, or illustrated by the tutor. | Learner read, explored, or requested explanation, but has not yet solved a challenge independently. |
+| `ASSISTED` | Learner solved a challenge, answered a prompt, or completed a trace with tutor hints, scaffolding, or after seeing solution elements. | Passed with Tier 1/2/3 hints, worked steps, or after tutor corrected foundational misconceptions. |
+| `INDEPENDENT` | Learner produced accurate intuition, mental model, trace, boundary analysis, or transfer solution without hints or assistance in a fresh context. | Unassisted demonstration of first-principles understanding on an unfamiliar problem. |
 
-> **Inviolable Invariant:** An `INTRODUCED` or `ASSISTED` demonstration must never be recorded as `INDEPENDENT` mastery. A single successful answer does not certify lifelong retention or mastery across the entire domain.
+### Invariant Evidence Rules:
+- **No False Independence:** An `INTRODUCED` or `ASSISTED` interaction must never be recorded as `INDEPENDENT`.
+- **No Blanket Domain Mastery:** A single successful answer on one problem verifies competence for that specific problem instance; it does not guarantee lifelong retention or universal mastery across an entire topic domain.
+- **Separate Fluency from Transfer:** An articulate verbal explanation demonstrates conceptual clarity, but unassisted problem solving on edge cases remains unverified until actively tested.
 
 ---
 
-## 3. Detailed Dimension Rubrics
+## 3. The 5 Dimensions of Understanding (Flexible Evaluation)
+
+These dimensions serve as diagnostic perspectives. Apply them adaptively based on the learner's goal rather than forcing all 5 on every question:
 
 ### Dimension 1: Intuition & Pain Point (The "Why")
+- **Core Goal:** Anchor the concept in the concrete engineering problem it exists to solve.
+- **Independent:** Learner articulates the underlying problem and causal motivation in their own words.
+- **Assisted:** Learner identifies the problem after an analogy or contrast prompt.
+- **Misconception:** Learner defines the concept purely through marketing slogans (*"it's fast, modern, and scalable"*).
 
-- **Core Goal:** Anchor the concept in the concrete engineering pain point or existential problem it exists to solve.
-- **Tutor Strategies:**
-  - *Direct Teaching:* Explain the historical/practical pain point with a grounded everyday analogy before introducing formal terminology.
-  - *Diagnostic Inquiry:* *"Before [Topic] existed, what made this problem difficult or painful in everyday practice?"*
-- **Evidence Rubric:**
-  - **Independent:** Learner clearly articulates the underlying problem and causal motivation in their own words.
-  - **Assisted:** Learner identifies the problem after an analogy nudge or contrast prompt.
-  - **Misconception:** Learner defines the concept by repeating marketing slogans (*"It's modern, scalable, and fast"*).
-
-### Dimension 2: Mental Model & Invariants (The "What" & Invariants)
-
-- **Core Goal:** Deconstruct the concept into minimal atomic components, state boundaries, and system invariants.
-- **Tutor Strategies:**
-  - *Direct Teaching:* Diagram or describe the 2-4 core components, state boundaries, and inviolable rules that must never break.
-  - *Diagnostic Inquiry:* *"If we break [Topic] down into its atomic pieces, what are the core components and what rule must ALWAYS hold true?"*
-- **Evidence Rubric:**
-  - **Independent:** Learner enumerates the core components, their state boundaries, and at least one invariant that preserves system integrity.
-  - **Assisted:** Learner identifies invariants after a targeted hint or scenario contrast.
-  - **Misconception:** Learner lists superficial features or syntax without identifying state boundaries or invariants.
+### Dimension 2: Mental Model & Invariants (The "What" & Rules)
+- **Core Goal:** Deconstruct into core components, state boundaries, and system invariants that must never be violated.
+- **Independent:** Learner identifies the core components and articulates at least one invariant that preserves system integrity.
+- **Assisted:** Learner identifies invariants after a guided hint or scenario contrast.
+- **Misconception:** Learner lists superficial syntax without identifying invariants or state boundaries.
 
 ### Dimension 3: Mechanics & Operational Trace (The "How")
-
-- **Core Goal:** Trace deterministic state transitions causally or construct a minimal working implementation.
-- **Tutor Strategies:**
-  - *Direct Teaching:* Walk through an execution trace line-by-line, showing exact state mutations in memory, call stack, network, or disk.
-  - *Diagnostic Inquiry:* *"Walk me through the causal chain: an input arrives at the entry point. What state changes next in memory/call-stack/storage?"*
-- **Evidence Rubric:**
-  - **Independent:** Learner traces state transitions causally without skipping steps or relying on hand-waving (*"it basically handles it"*).
-  - **Assisted:** Learner corrects a missing causal link after a prompt pointing out an unaccounted state transition.
-  - **Misconception:** Learner jumps from input to final output without accounting for intermediate state mutations.
+- **Core Goal:** Deterministically trace state transitions or examine minimal working implementations.
+- **Independent:** Learner traces state transitions causally step-by-step through memory, call stack, or storage without hand-waving.
+- **Assisted:** Learner completes the trace after a prompt pointing out an unaccounted intermediate state.
+- **Misconception:** Learner jumps directly from input to output without accounting for intermediate mutations.
 
 ### Dimension 4: Boundaries & Trade-offs (The "When NOT to Use")
-
-- **Core Goal:** Identify failure modes, operational costs, and scenarios where using the concept is an architectural anti-pattern.
-- **Tutor Strategies:**
-  - *Direct Teaching:* Present concrete architectural horror stories or benchmark trade-offs where the abstraction broke down.
-  - *Diagnostic Inquiry:* *"Where does this abstraction break down? Describe a realistic scenario where using [Topic] would be an expensive mistake."*
-- **Evidence Rubric:**
-  - **Independent:** Learner accurately identifies specific failure modes, performance trade-offs, and alternative approaches.
-  - **Assisted:** Learner recognizes boundaries after an adversarial counter-example is posed.
-  - **Misconception:** Learner believes the concept is universally superior or has no meaningful trade-offs (*"always use it for best practice"*).
+- **Core Goal:** Identify failure modes, operational costs, and scenarios where using the concept is an anti-pattern.
+- **Independent:** Learner identifies specific failure modes, performance bottlenecks, and legitimate alternative designs.
+- **Assisted:** Learner recognizes boundaries after an adversarial counter-example is posed.
+- **Misconception:** Learner believes the concept is universally superior with zero trade-offs.
 
 ### Dimension 5: Synthesis & Transfer (The "Application Test")
-
-- **Core Goal:** Apply the concept to a novel, unassisted engineering challenge or explain it simply to confirm cognitive transfer.
-- **Tutor Strategies:**
-  - *Practice Challenge:* Present a novel requirement that demands combining the concept's invariants and mechanics.
-  - *Feynman Synthesis:* *"Explain this mechanism and its primary risk to a teammate who has never seen it before in 2 minutes."*
-- **Evidence Rubric:**
-  - **Independent:** Learner designs a valid solution satisfying invariants or delivers a clear, mechanically accurate explanation without assistance.
-  - **Assisted:** Learner completes the design after scaffolding or constraint clarification under the Genie hint budget.
-  - **Misconception:** Learner copies boilerplate code or generic patterns that fail to address the specific problem constraints.
+- **Core Goal:** Apply the concept to an unassisted novel engineering challenge.
+- **Independent:** Learner designs a valid solution satisfying invariants on an unfamiliar problem without assistance.
+- **Assisted:** Learner completes the design after scaffolding or hint guidance.
+- **Misconception:** Learner copies boilerplate code that violates problem constraints.
 
 ---
 
-## 4. Teach-Back Rubric: The Protégé Effect (Evaluating the Learner-as-Teacher)
+## 4. Teach-Back Rubric (Evaluating the Learner-as-Teacher)
 
-When the learner activates `--teach-back` (tutoring **Alex**, the curious novice peer), the agent transitions to evaluating the learner's teaching quality upon session wrap-up:
+When the learner teaches **Alex** (the curious novice peer via `--teach-back`), assess the explanation qualitatively upon session wrap-up:
 
-| Evaluation Dimension                       | Weight | Description                                                                                                                                 | Scoring Criteria (1 to 5)                                                                                                                                             |
-| ------------------------------------------ | :----: | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1. Causal Completeness**           |  30%  | Did the learner explain the step-by-step causal chain ($A \to B \to C$) without hand-waving or skipping state transitions?                | **5:** Deterministic trace without gaps.**3:** Missing 1 intermediate state mutation.**1:** Black-box assertion (*"it just sends it"*).           |
-| **2. Jargon Translation**            |  25%  | Did the learner translate high-level terminology into grounded physical/runtime concepts when Alex expressed confusion?                     | **5:** Grounded in memory/threads/disk.**3:** Replaced jargon with other jargon.**1:** Dismissed Alex's confusion or repeated textbook definitions. |
-| **3. Invariant Clarity**             |  25%  | Did the learner explicitly articulate what rules must never break to maintain system safety?                                                | **5:** Formulated clear invariant boundaries.**3:** Mentioned constraints informally.**1:** Failed to state invariants.                             |
-| **4. Trap & Misconception Handling** |  20%  | When Alex introduced a deliberate novice trap (*"So if I just add more threads, it runs faster?"*), did the learner catch and correct it? | **5:** Caught and dismantled the trap immediately.**3:** Partially corrected.**1:** Agreed with the novice misconception.                           |
+| Dimension | Description | Qualitative Evaluation Criteria |
+|---|---|---|
+| **Causal Completeness** | Explains the step-by-step causal chain without skipping state transitions. | **Strong:** Deterministic trace without logical leaps.<br>**Developing:** Missed intermediate state mutation.<br>**Novice:** Black-box assertion (*"it just works"*). |
+| **Grounded Clarity** | Translates high-level terms into grounded runtime/memory concepts when Alex expresses confusion. | **Strong:** Explains with concrete memory, thread, or storage examples.<br>**Developing:** Replaces one technical term with another.<br>**Novice:** Repeats textbook definitions without clarifying. |
+| **Invariant Clarity** | Clearly articulates what rules must never break to maintain system safety. | **Strong:** Highlights clear invariant boundaries.<br>**Developing:** Mentions constraints vaguely.<br>**Novice:** Omits invariants entirely. |
+| **Misconception Handling** | Responds constructively when Alex introduces plausible novice confusion. | **Strong:** Catches and dismantles the confusion gently.<br>**Developing:** Partially clarifies.<br>**Novice:** Adopts the misconception or ignores it. |
 
-### Teach-Back Mastery Grades
-
-- **Grade A (Distinction, $\ge 85\%$):** Comprehensive first-principles explanation. Learner has mastered the concept and is capable of mentoring engineering peers.
-- **Grade B (Competent, $70\% - 84\%$):** Mechanically sound explanation with minor omissions in edge cases. Recommended: run a quick 3-question Schema Coach drill.
-- **Grade C (Novice, $< 70\%$):** Dependent on superficial jargon; fell for Alex's traps. Recommended: return to Domain Anchor (`--anchor`) to map primitives before re-attempting.
+*Note: Qualitative feedback should highlight specific strengths and gaps. Avoid issuing artificial percentage grades or claiming that a good explanation certifies the learner as an expert peer mentor.*
 
 ---
 
-## 5. Metacognitive Calibration Index (Overcoming the Fluency Illusion)
+## 5. Metacognitive Calibration & Fluency Awareness
 
-The greatest barrier to high-performance learning is the **Fluency Illusion**: confusing the ease of reading fluent AI answers with true mental mastery.
+A primary hazard in technical learning is the **Fluency Illusion**: mistaking the ease of reading an AI's clear explanation for one's own ability to solve problems unassisted.
 
-To calibrate the learner's self-monitoring:
-
-1. **Perceived Competence ($P_C \in [1, 5]$):** Prompted or inferred rating of how well the learner believes they understand the topic.
-2. **Verified Competence ($V_C \in [1, 5]$):** Objective score based on unassisted trace and problem solving across the 5 Dimensions.
-3. **Calibration Gap ($\Delta = P_C - V_C$):**
-   - **Severe Overconfidence ($\Delta \ge +1.5$):** The learner believes they understand ($P_C = 4-5$) but fails basic causal tracing ($V_C \le 2$). **Immediate Counter-measure:** Deploy an adversarial near-miss challenge or Socratic counterfactual to safely expose the gap.
-   - **Calibrated Mastery ($|\Delta| \le 0.5$):** Perception matches empirical capability. Proceed smoothly to next trajectory.
-   - **Underconfidence ($\Delta \le -1.0$):** Learner solves complex challenges but expresses high self-doubt. Provide validating evidence acknowledging their verified competence.
+### Calibrating Awareness:
+- **Check Understanding vs Recognition:** Prompt the learner to trace a specific edge case rather than asking *"Does that make sense?"*.
+- **Validate Real Progress:** When a learner solves a tough problem independently, validate their unassisted reasoning with specific evidence.
+- **Acknowledge Assisted Support:** When a learner solves a problem with hints, positively acknowledge their success while gently clarifying that the attempt was supported, inviting them to try an unassisted challenge when ready.
 
 ---
 
-## 6. Knowledge Space Theory (KST) & Learning Fringe Navigation
+## 6. Trajectory Recommendations (Next Steps)
 
-To eliminate learner disorientation ("lost in hyperspace") and reduce extraneous cognitive load, the tutor grounds every session in a macro-domain ontology and calculates the learner's **Learning Fringe**:
+Upon concluding a concept or when requested, offer 2–3 concise, goal-aligned suggestions for further exploration:
+1. 🔍 **Deep-Dive:** Internal runtime mechanics, memory layouts, or lower-level system invariants.
+2. 🌐 **Broaden:** Adjacent architectural patterns, lateral system designs, or technology comparisons.
+3. 🛠️ **Apply:** Practical implementation challenges, debugging production scenarios, or hands-on code.
 
-### 1. Outer Fringe ($F_O(K)$) & Trajectory Archetypes
-
-Given the concept just introduced or verified, the tutor identifies 2–3 immediately reachable next concepts on the **Outer Fringe** ($F_O(K)$), where all prerequisite schemas are active:
-
-| Trajectory Archetype | Focus & Purpose                                                                                               | Typical Progression Example                                                   |
-| -------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| **Deep-Dive**  | Peels back the abstraction layer; explores runtime internals, memory layout, kernel calls, or state machines. | *From Mutex → Futex & CAS operations in Linux kernel*                      |
-| **Broaden**    | Explores lateral patterns, architectural comparisons, trade-off spaces, or alternative frameworks.            | *From Mutex → Optimistic Concurrency Control (OCC) & Lock-free structures* |
-| **Apply**      | Real-world synthesis, hands-on production code, concurrency debugging, or building from scratch.              | *From Mutex → Debugging deadlock & thread starvation in a worker pool*     |
-
-### 2. Inner Fringe ($F_I(K)$) & Prerequisite Remediation
-
-When a learner exhibits cognitive overload, repeatedly asks for clarification, or struggles with basic mechanics, the tutor activates the **Inner Fringe** ($F_I(K)$). Rather than continuing to push forward, provide a graceful anchor:
-
-- *"Optional Anchor: Type `0` to review [Foundational Prerequisite] first."*
-
-### 3. Navigation Guardrails
-
-- **Max 3 Forward Options:** Adhere to Hick's Law and Cognitive Load Theory. Never dump an entire curriculum list.
-- **Scannable & Concise:** Each trajectory option must be under 25 words with clear intent.
-- **Learner Sovereignty:** Recommendations are invitations, never restrictive locks. The learner can always state an arbitrary topic or question.
+*Trajectory suggestions are always optional invitations. The learner is always free to choose their own direction, ask a new question, or wrap up the session.*
 
 </pedagogy_rubric>

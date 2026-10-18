@@ -1,8 +1,8 @@
-# Agent as a Tutor: High-Performance Cognitive Mastery Engine
+# Agent as a Tutor: Professional Technical Tutor & Pedagogical Companion
 
-An evidence-based **Technical Tutor & Teachable Agent** skill for AI Coding Assistants (Google Antigravity, Cursor, Windsurf, Claude Code).
+An evidence-calibrated **Technical Tutor & Pedagogical Companion** skill for AI Coding Assistants (Google Antigravity, Cursor, Windsurf, Claude Code) and web chat platforms (ChatGPT, Claude, Gemini).
 
-Grounded in **Cognitive Science** (Cognitive Load Theory, Desirable Difficulties, The Protégé Effect, and FSRS-5 Spaced Repetition), this skill transforms your AI from a passive answer generator into a rigorous cognitive personal tutor and teachable peer.
+Grounded in **Cognitive Science** principles (Cognitive Load Theory, Desirable Difficulties, Active Retrieval, and the Protégé Effect), this skill transforms your AI assistant into an adaptive personal tutor that fosters genuine, first-principles understanding while respecting your energy, time, and autonomy.
 
 ```
 ███████╗██╗  ██╗██╗██╗     ██╗     ███████╗
@@ -12,42 +12,52 @@ Grounded in **Cognitive Science** (Cognitive Load Theory, Desirable Difficulties
 ███████║██║  ██╗██║███████╗███████╗███████║
 ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝
 
-The open agent skills ecosystem • strict-tutor v3.0
+The open agent skills ecosystem • strict-tutor v3.1
 ```
 
 ---
 
-## Quick Start: Installation via `npx`
+## Quick Start & Installation
 
-### Method 1: Using the Standalone CLI (Zero Dependencies)
+### Option 1: AI Coding Assistants via `npx` (Zero Dependencies)
 
-Install the skill directly into your current project's `.agents/skills/strict-tutor/`:
+Install directly into your workspace's `.agents/skills/strict-tutor/`:
 
 ```bash
 # Install to current project root:
 npx agent-as-a-tutor .
 
-# Install into a specific monorepo package or subfolder:
+# Install into a specific subfolder or monorepo package:
 npx agent-as-a-tutor ./packages/backend
 
-# Direct from GitHub (without needing npm registry):
-npx github:DamPhuQuy/agent-as-a-tutor .
-```
-
-### Method 2: Using the Official `skills` CLI (`skills.sh`)
-
-Because this repository strictly conforms to the open agent skills specification:
-
-```bash
-# Install via the open skills ecosystem:
+# Or install via the open agent skills registry:
 npx skills add DamPhuQuy/agent-as-a-tutor
 ```
 
+### Option 2: AI Web Chat Platforms (ChatGPT, Claude, Gemini, LibreChat)
+
+For web interfaces without local CLI or filesystem access, use the single self-contained prompt bundle:
+- Open [`skills/strict-tutor/web-prompt.md`](./skills/strict-tutor/web-prompt.md).
+- Copy its contents and paste into your Custom Instructions, System Prompt, or the initial turn of a chat session.
+
 ---
 
-## How to Use: 5 Cognitive Simulator Modes
+## Core Philosophy: Learning by Intent, Not Forced Interrogation
 
-Instead of an unstructured single-prompt tutor that drifts or leaks answers, `strict-tutor v3.0` provides **5 bounded Cognitive Simulators** tailored to different phases of understanding:
+Unlike rigid tutors that trap you in endless Socratic quizzes or refuse to explain basic concepts, `strict-tutor v3.1` follows a **Learner-Intent Hierarchy**:
+
+| Intent | When You Say | How Tutor Responds |
+|---|---|---|
+| **EXPLORE** | *"What is X?", "Cho mình biết khái niệm X"* | Delivers a direct, high-signal explanation and concise worked example. No prerequisite gatekeeping. |
+| **UNDERSTAND** | *"Explain under the hood", "Giải thích sâu cơ chế"* | Provides detailed deterministic traces (memory, runtime, threads, storage) with high technical depth. If you request no questions, it honors that request. |
+| **PRACTICE** | *"Quiz me", "Luyện tập bài tập này", `--practice`* | Offers calibrated micro-challenges and tiered hints (analogy $\to$ search space narrowing $\to$ worked micro-step). |
+| **ASSESS** | *"Test my transfer", "Kiểm tra mức hiểu"* | Evaluates unassisted reasoning and novel transfer scenarios against explicit criteria. |
+
+---
+
+## Pedagogical Tactics & Compatibility Flags
+
+Flags and simulator modes are **adaptive tactics**, never inescapable traps:
 
 ```
                                   ┌──────────────────────────┐
@@ -55,137 +65,104 @@ Instead of an unstructured single-prompt tutor that drifts or leaks answers, `st
                                   │   (Adaptive Mode)        │
                                   └────────────┬─────────────┘
                                                │
-            ┌─────────────────────┬────────────┴─────────────┬─────────────────────┐
-            ▼                     ▼                          ▼                     ▼
-   ┌─────────────────┐   ┌─────────────────┐        ┌─────────────────┐   ┌─────────────────┐
-   │  --anchor       │   │  --practice     │        │  --socratic     │   │  --teach-back   │
-   │  Domain Anchor  │   │  Schema Coach   │        │  Socratic Mentor│   │  Novice Protégé │
-   │  (Primitives)   │   │  (Genie Budget) │        │  (Anti-Oracle)  │   │  (Alex / LBT)   │
-   └─────────────────┘   └─────────────────┘        └─────────────────┘   └─────────────────┘
-                                                                                   │
-                                                                                   ▼
-                                                                          ┌─────────────────┐
-                                                                          │  --cards        │
-                                                                          │  FSRS-5 Cards   │
-                                                                          └─────────────────┘
+             ┌─────────────────────┬────────────┴─────────────┬─────────────────────┐
+             ▼                     ▼                          ▼                     ▼
+    ┌─────────────────┐   ┌─────────────────┐        ┌─────────────────┐   ┌─────────────────┐
+    │  --anchor       │   │  --practice     │        │  --socratic     │   │  --teach-back   │
+    │  Domain Anchor  │   │  Schema Coach   │        │  Socratic Mentor│   │  Novice Protégé │
+    │  (Primitives)   │   │  (Scaffolding)  │        │  (Boundaries)   │   │  (Alex / LBT)   │
+    └─────────────────┘   └─────────────────┘        └─────────────────┘   └─────────────────┘
+                                                                                    │
+                                                                                    ▼
+                                                                           ┌─────────────────┐
+                                                                           │  --cards        │
+                                                                           │  Flashcard TSV  │
+                                                                           └─────────────────┘
 ```
 
-### 1. Adaptive Mode (Default)
-Balanced first-principles exploration. Provides intuitive analogies, mental models, execution traces, and calibrated micro-challenges at your own pace.
-
-```text
-/tutor raft consensus
-/tutor virtual memory
-/tutor event loop
-```
-
-### 2. Domain Anchor Mode (`--anchor`)
-**Best for:** Brand new topics with dense documentation or source code.
-**Mechanism:** Implements a **Zero-Explanation Policy**. The AI refuses to spoon-feed summaries; instead, it anchors directly in primary docs or codebase files and guides you to extract the atomic components and trace the causal relations ($A \to B$) yourself.
-
-```text
-/tutor raft consensus --anchor
-/tutor kubernetes reconciler --anchor
-```
-
-### 3. Schema Coach Mode (`--practice`)
-**Best for:** Deliberate practice and discrimination training.
-**Mechanism:** Enforces **Practice-Only Mode**. The AI will never output full solution code. It generates realistic "near-miss" problem scenarios and applies the **Genie-in-a-Bottle** hint budget (3 hints maximum, requiring you to submit a draft attempt first).
-
-```text
-/tutor database deadlock --practice
-/tutor css grid vs flexbox --practice
-```
-
-### 4. Socratic Mentor Mode (`--socratic` or `--strict`)
-**Best for:** Intermediate to advanced concepts where you want your mental model stress-tested.
-**Mechanism:** Operates under the **Anti-Oracle Rule**. The tutor never validates you with empty praise (*"That's right!"*). Instead, it interrogates your assumptions, poses adversarial counterfactuals (*"What if the network partitions right between step 2 and 3?"*), and demands architectural trade-off justification.
-
-```text
-/tutor microservices vs modular monolith --socratic
-/tutor optimistic concurrency control --strict
-```
-
-### 5. Novice Protégé / Teach-Back Mode (`--teach-back`)
-**Best for:** Deepest cognitive mastery and preparation for engineering interviews or system design reviews.
-**Mechanism:** Reverses pedagogical roles using the **Protégé Effect (Learning by Teaching)**. The AI adopts the persona of **Alex**, an inquisitive, intelligent novice peer with deliberate knowledge gaps. You teach Alex from scratch. Alex will challenge hand-waving (*"Wait, why does the thread pause there?"*) and test if you can explain causal state changes without jargon.
-
-```text
-/tutor oauth2 authorization code flow --teach-back
-/tutor b-trees vs lsm-trees --teach-back
-```
-*At the end of the session, Alex exits persona to provide an objective **Teach-Back Mastery Grade (A/B/C)** covering Causal Completeness, Jargon Translation, Invariant Clarity, and Trap Handling.*
+1. **Adaptive Mode (Default):** Balanced explanations and calibrated challenges matching your pacing (`/tutor raft consensus`).
+2. **Domain Anchor (`--anchor`):** Grounding in primary codebase files, core primitives, and system invariants.
+3. **Schema Coach (`--practice`):** Deliberate practice with scaffolded hints. If you get stuck or exhausted, you can ask for the answer directly and it will be provided with full causal reasoning.
+4. **Socratic Mentor (`--socratic` / `--strict`):** Stress-tests mental models with counterfactual probes and architectural boundary trade-offs.
+5. **Novice Protégé / Teach-Back (`--teach-back`):** Reverses roles using the Protégé Effect. You teach **Alex**, a curious peer.
+   - **Instant Persona Exit:** Say *"stop roleplaying"*, *"dừng đóng vai"*, or ask for an explanation, and Alex drops persona immediately on the very next turn.
 
 ---
 
-## Long-Term Retention: FSRS-5 Flashcard Generation (`--cards`)
+## Honest Evidence Tracking
 
-Research shows that ~74% of newly learned technical details are forgotten within 24 hours unless consolidated through active retrieval.
+Competency is tracked transparently across 4 distinct evidence levels:
+- `UNASSESSED`: Concept not yet addressed.
+- `INTRODUCED`: Explained or demonstrated by the tutor; no independent solution yet.
+- `ASSISTED`: Solved with hints, scaffolding, or after seeing solution elements.
+- `INDEPENDENT`: Solved autonomously in an unassisted, novel problem context.
 
-When wrapping up any tutoring session, ask for flashcards or pass `--cards`:
+**Epistemic Boundary:** Receiving hints or viewing the solution always records the attempt as `ASSISTED`. Independent mastery is never certified on a problem that was solved with assistance.
 
-```text
-/tutor raft consensus --cards
-/tutor wrap
-```
+---
 
-The tutor compiles an **Anki-ready TSV block** powered by the **FSRS-5 (Free Spaced Repetition Scheduler)** DSR model ($D$ = Difficulty, $S$ = Stability in days, $R$ = Retrievability):
-- **Core System Invariants:** Tagged for **$R=90\%$** desired retention (stricter review intervals).
-- **Broader Trade-offs & Patterns:** Tagged for **$R=85\%$** desired retention (optimal study efficiency).
+## Flashcard Export (`--cards`)
 
-Example Flashcard Output:
+At session wrap-up or whenever requested, the tutor compiles active retrieval flashcards in clean TSV format ready for import into **Anki**:
+
 ```tsv
-# Card ID	Type	Prompt (Front)	Target Retrieval (Back)	D (1-10)	S (Days)	Target R	Tags
-CARD-01	Mechanic Trace	What happens when a Raft Follower's election timer expires?	It increments its currentTerm, transitions to Candidate, votes for itself, and broadcasts RequestVote RPCs to all peers.	4.0	1.0	90%	raft,consensus,invariants
-CARD-02	Boundary	When is Raft linearizable read lease invalid?	During clock drift or an undetected network partition where a split-brain leader continues serving stale reads without quorum re-verification.	5.5	1.0	90%	raft,consensus,boundaries
+# Card ID	Card Type	Front (Prompt)	Back (Target Explanation / Trace)	Tags
+CARD-01	Concept	What core problem does Raft consensus solve, and what is its election invariant?	Split-brain prevention; at most one leader can be elected in any given term.	raft,consensus
+CARD-02	Boundary	When is Raft linearizable lease read invalid?	During clock drift or an undetected network partition where a split-brain leader continues serving reads without quorum re-check.	raft,boundaries
+```
+
+*Note: The tutor generates import-ready card content. Automated spaced repetition scheduling requires dedicated software such as Anki.*
+
+---
+
+## Verification & Contract Tests
+
+This repository maintains zero-dependency test coverage using Node.js built-ins:
+
+```bash
+# Verify web prompt bundle is synchronized and up-to-date:
+node scripts/build-tutor-web.cjs --check
+
+# Rebuild web prompt bundle if canonical source files were edited:
+node scripts/build-tutor-web.cjs
+
+# Run contract tests (mirror parity, seeds, bundle integrity, CLI smoke):
+node --test tests/tutor-contract.test.cjs
 ```
 
 ---
 
-## Anti-Cargo-Cult & Anti-Offloading Guardrails
-
-To protect against **Cognitive Atrophy** and **Vibe Coding** (where learners rely entirely on AI to write code, suffering a 20%–40% performance collapse on unassisted tests):
-
-1. **The "Genie in a Bottle" Hint Protocol:**
-   - Maximum **3 scaffolded hints** per practice problem.
-   - **Draft-First Invariant:** The tutor will never give a hint unless you provide an initial attempt, hypothesis, or draft snippet.
-   - If hints run out, the tutor triggers **Tier 4 Bridge Instruction** (explains the missing invariant with a worked example, then gives a fresh challenge).
-2. **Buzzword Interception:**
-   - Dropping terms like *"virtual DOM"* or *"idempotent"* without explaining the state transition prompts an immediate causal probe: *"What actually happens to the memory / thread / network at that step?"*
-3. **Metacognitive Calibration Index:**
-   - Compares your Perceived Competence ($P_C$) against your Verified Competence ($V_C$). If a "Fluency Illusion" gap is detected ($\Delta \ge +1.5$), the tutor presents an unassisted near-miss challenge to calibrate your intuition.
-4. **Knowledge Compass Navigation:**
-   - Every topic conclusion calculates your **Outer Fringe** ($F_O(K)$) with 3 distinct next trajectories:
-     - 🔍 **Deep-Dive:** Internal mechanics & kernel/runtime state.
-     - 🌐 **Broaden:** Lateral architecture trade-offs.
-     - 🛠️ **Apply:** Hands-on production implementation or debugging.
-     - ⚓ **Remediate (`0`):** Review foundational prerequisite if stuck.
-
----
-
-## Repository & Skill Structure
+## Repository Structure
 
 ```
 skills/strict-tutor/
-├── SKILL.md                          # Core Agent Skill & 5-Simulator Routing Manifest
+├── SKILL.md                          # Canonical skill manifest & intent routing
+├── web-prompt.md                     # Generated self-contained web chat prompt
 └── references/
-    ├── pedagogy-rubric.md            # 5 Dimensions, Teach-Back Rubric & Metacognitive Calibration
-    ├── anti-cargo-cult-rules.md      # Anti-Offloading, Genie Protocol & 4-Tier Scaffolding
-    └── session-template.md           # Session State Schema & FSRS-5 Flashcard Ledger
+    ├── pedagogy-rubric.md            # Evidence hierarchy, 5 dimensions, teach-back rubric
+    ├── anti-cargo-cult-rules.md      # Scaffolding ladder, recovery heuristics, exit rules
+    └── session-template.md           # Session ledger schema & flashcard TSV template
+.agents/skills/strict-tutor/          # Identical mirror for agent environments
+scripts/
+└── build-tutor-web.cjs               # Deterministic bundle builder (--check support)
+tests/
+├── tutor-contract.test.cjs           # Deterministic contract & smoke test suite
+└── evals/
+    ├── tutor-cases.json              # 38 evaluation cases (19 base E/LX + 19 variants)
+    └── README.md                     # Replay protocol, severity criteria, and limitations
 bin/
-└── cli.js                            # Standalone Zero-Dependency Node.js Installer
+└── cli.js                            # Standalone zero-dependency installer
 ```
 
 ---
 
-## Pedagogical Grounding & Research Citations
+## Pedagogical Foundations & Citations
 
-- **Dunlosky et al. (2013):** *Improving Student's Learning With Effective Learning Techniques* (Practice Testing & Distributed Practice as top-tier utility).
-- **Bjork & Bjork (2011):** *Desirable Difficulties in Theory and Practice* (Storage Strength vs Retrieval Strength).
-- **Sweller (1988):** *Cognitive Load Theory* (Intrinsic, Extraneous, and Germane cognitive load).
-- **Bargh & Schul (1980) / Kucharavy (ACL BEA 2025):** *The Protégé Effect & LLMs Protégés* (+8.8% to +15% performance gain when teaching an AI novice).
-- **Risko & Gilbert (2016) / CEUR-WS (2025):** *Cognitive Offloading & Genie-in-a-Bottle Constrained Feedback* (Preventing cognitive atrophy).
-- **Jarrett Ye (2022–2025):** *FSRS-5 Free Spaced Repetition Scheduler* (DSR mathematical memory model).
+- **Dunlosky et al. (2013):** *Improving Students' Learning With Effective Learning Techniques* (Highlighting active retrieval practice and distributed learning).
+- **Bjork & Bjork (2011):** *Making Things Hard on Yourself, But in a Good Way: Creating Desirable Difficulties to Enhance Learning*.
+- **Sweller (1988):** *Cognitive Load Theory* (Managing intrinsic and extraneous cognitive load to optimize germane learning).
+- **Bargh & Schul (1980):** *The Protégé Effect / Learning by Teaching* (Enhanced cognitive consolidation when explaining concepts to an inquisitive peer).
+- **Risko & Gilbert (2016):** *Cognitive Offloading* (Balancing computational assistance with active internal struggle).
 
 ---
 
