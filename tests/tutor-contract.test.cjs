@@ -92,7 +92,10 @@ test('Web Prompt: Content integrity and no unresolved local references', () => {
     'Platform & Environment Note',
     'Appendix A: Anti-Rote, Anti-Cargo-Culting & Recovery Heuristics',
     'Appendix B: Pedagogical Rubrics & Evidence Guidelines',
-    'Appendix C: Tutor Session State Schema Template'
+    'Appendix C: Tutor Session State Schema Template',
+    'TOPDOWN_ROADMAP',
+    'Next-Hop Compass',
+    'Avoiding the "Bottom-Up Internals Rabbit Hole"'
   ];
 
   for (const anchor of requiredAnchors) {
