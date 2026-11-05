@@ -95,7 +95,12 @@ test('Web Prompt: Content integrity and no unresolved local references', () => {
     'Appendix C: Tutor Session State Schema Template',
     'TOPDOWN_ROADMAP',
     'Next-Hop Compass',
-    'Avoiding the "Bottom-Up Internals Rabbit Hole"'
+    'Avoiding the "Bottom-Up Internals Rabbit Hole"',
+    'SATELLITE_RADAR',
+    '--radar',
+    'Satellite Radar Output Format',
+    'Anti-Monolithic Chat Wall & Web-Grade Cognitive Ergonomics',
+    'Satellite Radar & Web Grounding Rubric'
   ];
 
   for (const anchor of requiredAnchors) {

@@ -81,10 +81,12 @@ Flags and simulator modes are **adaptive tactics**, never inescapable traps:
 ```
 
 1. **Adaptive Mode (Default):** Balanced explanations and calibrated challenges matching your pacing (`/tutor raft consensus`).
-2. **Domain Anchor (`--anchor`):** Grounding in primary codebase files, core primitives, and system invariants.
-3. **Schema Coach (`--practice`):** Deliberate practice with scaffolded hints. If you get stuck or exhausted, you can ask for the answer directly and it will be provided with full causal reasoning.
-4. **Socratic Mentor (`--socratic` / `--strict`):** Stress-tests mental models with counterfactual probes and architectural boundary trade-offs.
-5. **Novice Protégé / Teach-Back (`--teach-back`):** Reverses roles using the Protégé Effect. You teach **Alex**, a curious peer.
+2. **Satellite Radar (`--satellite` / `--radar`):** High-density conceptual constellation. Projects a 360° satellite matrix (Architecture, Failure Modes, Alternatives, Tooling) with actionable Golden Web Search Queries to combine AI's mapping power with fast, non-linear web exploration.
+3. **Top-Down Roadmap (`--topdown` / `--roadmap`):** Pragmatic system-level roadmap prioritizing backend & AI application engineering contracts over premature microscopic internals.
+4. **Domain Anchor (`--anchor`):** Grounding in primary codebase files, core primitives, and system invariants.
+5. **Schema Coach (`--practice`):** Deliberate practice with scaffolded hints. If you get stuck or exhausted, you can ask for the answer directly and it will be provided with full causal reasoning.
+6. **Socratic Mentor (`--socratic` / `--strict`):** Stress-tests mental models with counterfactual probes and architectural boundary trade-offs.
+7. **Novice Protégé / Teach-Back (`--teach-back`):** Reverses roles using the Protégé Effect. You teach **Alex**, a curious peer.
    - **Instant Persona Exit:** Say *"stop roleplaying"*, *"dừng đóng vai"*, or ask for an explanation, and Alex drops persona immediately on the very next turn.
 
 ---

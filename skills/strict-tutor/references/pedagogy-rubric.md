@@ -105,4 +105,18 @@ Upon concluding a concept or when requested (via `--roadmap` or `--topdown`), or
 
 *Trajectory suggestions are always concise, optional compass bearings. Never force the learner into mandatory homework or endless next-topic menus.*
 
+---
+
+## 7. Satellite Radar & Web Grounding Rubric (High-Density Exploration)
+
+When evaluating or generating an exploratory learning artifact (such as a `--radar`, `--satellite`, or `EXPLORE` overview), apply the following quality rubric:
+
+| Dimension | Target Standard | Anti-Pattern |
+|---|---|---|
+| **Core Invariant Formulation** | Exactly 1 concise sentence expressing the mechanical truth and state boundary. | Marketing slogan (*"fast, modern, distributed"*), or a 3-paragraph definition. |
+| **Visual Spatial Trace** | A 3-5 line ASCII/Mermaid flow diagram showing input, actor/state mutation, and output. | No diagram, or an overwhelmingly complex 50-line architecture dump. |
+| **360° Satellite Breadth** | Spans across all 4 orbits: Architecture (🧱), Failure Modes (🛡️), Alternatives (🔀), and Ecosystem Tooling (🔬). | Listing 4 synonyms of the same concept without addressing traps or alternatives. |
+| **Golden Web Search Queries** | Search-engine-ready keywords enclosed in quotes that direct the learner to official RFCs, docs, or GitHub source files without SEO spam. | Generic terms like `"raft algorithm"` or fake hallucinated URL links. |
+| **Zero-Friction Navigation** | Explicit action hooks (`zoom <satellite>`, `compare <sat1> vs <sat2>`) enabling immediate follow-up without chat interrogation. | Forcing the learner to solve a quiz before unlocking the next concept. |
+
 </pedagogy_rubric>
